@@ -56,14 +56,7 @@ public abstract class Car implements Movable {
     public double[] getCurrentPosition() {
         return currentPosition;
     }
-    public void setCurrentPosition(double[] positionUpdate) {
-        if (currentPosition.length != positionUpdate.length) {
-            throw new IllegalArgumentException("Arrays must have same length");
-        }
-        for (int i = 0; i < currentPosition.length; i++) {
-            currentPosition[i] += positionUpdate[i];
-        }
-    }
+
     public Color getColor() {
         return color;
     }
