@@ -4,8 +4,8 @@ public abstract class Car implements Movable {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
-    protected double currentPosition;  // Just a 1D dummy representation of position
-    protected double currentDirection; // Angle in degrees
+    protected double[] currentPosition;
+    protected double currentDirection; // Angle in degrees (from unit vector perspective)
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -21,10 +21,15 @@ public abstract class Car implements Movable {
     // the required method by the interface for the first time. But it is not
     // wrong either.
     @Override
-    public void move(double distance) {
-        currentPosition += distance;
-        System.out.println("The car moved the distance: " + distance);
+    public void move(double timestep) {
+        // currentPosition is a 2D array: [x, y]
+        double direction = Math.atan2(currentPosition[1], currentPosition[0]);
+        double positionChange = getCurrentSpeed() * timestep;
+
+        currentPosition[0] += positionChange * Math.cos(direction);
+        currentPosition[1] += positionChange * Math.sin(direction);
     }
+    // We could use radians below if we wanted to
     @Override
     public void turnLeft(double angle) {
         currentDirection = (currentDirection + angle) % 360;
@@ -45,6 +50,20 @@ public abstract class Car implements Movable {
         return currentSpeed;
     }
 
+    public double getCurrentDirection() {
+        return currentDirection;
+    }
+    public double[] getCurrentPosition() {
+        return currentPosition;
+    }
+    public void setCurrentPosition(double[] positionUpdate) {
+        if (currentPosition.length != positionUpdate.length) {
+            throw new IllegalArgumentException("Arrays must have same length");
+        }
+        for (int i = 0; i < currentPosition.length; i++) {
+            currentPosition[i] += positionUpdate[i];
+        }
+    }
     public Color getColor() {
         return color;
     }
