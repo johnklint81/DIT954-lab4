@@ -3,4 +3,4 @@ Lab assignment 1 in the course Object-oriented Programming and Design, GU/Chalme
 
 See Canvas for instructions.
 
-John's branch
+### John's branch
