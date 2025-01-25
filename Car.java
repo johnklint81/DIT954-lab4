@@ -1,9 +1,11 @@
 import java.awt.*;
 
-public abstract class Car {
+public abstract class Car implements Movable {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
+    protected double currentPosition;  // Just a 1D dummy representation of position
+    protected double currentDirection; // Angle in degrees
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -15,7 +17,22 @@ public abstract class Car {
     protected Car(Color color) {
         this.color = color;
     }
-
+    // Override is strictly speaking not necessary here since we implement
+    // the required method by the interface for the first time. But it is not
+    // wrong either.
+    @Override
+    public void move(double distance) {
+        currentPosition += distance;
+        System.out.println("The car moved the distance: " + distance);
+    }
+    @Override
+    public void turnLeft(double angle) {
+        currentDirection = (currentDirection + angle) % 360;
+    }
+    @Override
+    public void turnRight(double angle) {
+        currentDirection = (currentDirection - angle) % 360;
+    }
     public int getNrDoors() {
         return nrDoors;
     }
