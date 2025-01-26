@@ -11,6 +11,8 @@ public abstract class Car implements Movable {
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
+    // Should not be a property of car, but for now it is
+    protected final static double timestep = 0.1;
 
     // Constructor, maybe we should have more fields in this one?
     // I don't like that the subclasses initialises nrDoors, enginePower, etc
@@ -21,8 +23,9 @@ public abstract class Car implements Movable {
     // the required method by the interface for the first time. But it is not
     // wrong either.
     @Override
-    public void move(double timestep) {
+    public void move() {
         // currentPosition is a 2D array: [x, y]
+        // atan2 gives us signed direction in radians
         double direction = Math.atan2(currentPosition[1], currentPosition[0]);
         double positionChange = getCurrentSpeed() * timestep;
 

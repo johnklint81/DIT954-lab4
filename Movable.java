@@ -1,5 +1,5 @@
 public interface Movable {
-    void move(double timestep);
+    void move();
     void turnLeft(double angle);
     void turnRight(double angle);
 }
