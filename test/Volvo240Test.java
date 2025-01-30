@@ -9,7 +9,7 @@ class Volvo240Test {
     @Test
     void speedFactor() {
         Volvo240 volvo240 = new Volvo240();
-        double speedValue = Volvo240.trimFactor * volvo240.enginePower * 0.01;
+        double speedValue = Volvo240.trimFactor * volvo240.getEnginePower() * 0.01;
         assertEquals(speedValue, volvo240.speedFactor());
     }
 
@@ -37,5 +37,10 @@ class Volvo240Test {
 
         assertThrows(IllegalArgumentException.class, () -> volvo240.brake(1.5));
         assertThrows(IllegalArgumentException.class, () -> volvo240.brake(-1.5));
+    }
+    @Test
+    void getModelName() {
+        Volvo240 volvo240 = new Volvo240();
+        assertEquals("Volvo240", volvo240.getModelName());
     }
 }

@@ -78,14 +78,14 @@ class CarTest {
     void startEngine() {
         Car saab = new Saab95();
         saab.startEngine();
-        assertEquals(0.1, saab.currentSpeed);
+        assertEquals(0.1, saab.getCurrentSpeed());
     }
 
     @Test
     void stopEngine() {
         Car saab = new Saab95();
         saab.stopEngine();
-        assertEquals(0, saab.currentSpeed);
+        assertEquals(0, saab.getCurrentSpeed());
     }
 
     @Test

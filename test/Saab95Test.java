@@ -25,10 +25,10 @@ class Saab95Test {
     void speedFactor() {
         Saab95 saab95 = new Saab95();
         saab95.turboOn = true;
-        double turboOnValue = 1.3 * saab95.enginePower * 0.01;
+        double turboOnValue = 1.3 * saab95.getEnginePower() * 0.01;
         assertEquals(turboOnValue, saab95.speedFactor());
         saab95.turboOn = false;
-        double turboOffValue = 1.0 * saab95.enginePower * 0.01;
+        double turboOffValue = 1.0 * saab95.getEnginePower() * 0.01;
         assertEquals(turboOffValue, saab95.speedFactor());
     }
 
@@ -55,5 +55,10 @@ class Saab95Test {
 
         assertThrows(IllegalArgumentException.class, () -> saab95.brake(1.5));
         assertThrows(IllegalArgumentException.class, () -> saab95.brake(-1.5));
+    }
+    @Test
+    void getModelName() {
+        Saab95 saab95 = new Saab95();
+        assertEquals("Saab95", saab95.getModelName());
     }
 }
