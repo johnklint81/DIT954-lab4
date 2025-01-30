@@ -101,30 +101,4 @@ class CarTest {
         // speed is 100 * 0.01 * 1.25 = 1.25
         assertEquals(1.25, volvo.speedFactor());
     }
-
-    @Test
-    void incrementSpeed() {
-        Car saab = new Saab95();
-        saab.incrementSpeed(1000);
-        System.out.println(saab.getCurrentSpeed());
-        assertEquals(saab.getEnginePower(), saab.getCurrentSpeed());
-
-        Car volvo = new Volvo240();
-        volvo.incrementSpeed(1000);
-        System.out.println(volvo.getCurrentSpeed());
-        assertEquals(volvo.getEnginePower(), volvo.getCurrentSpeed());
-    }
-
-    @Test
-    void decrementSpeed() {
-        Car saab = new Saab95();
-        saab.decrementSpeed(1000);
-        System.out.println(saab.getCurrentSpeed());
-        assertEquals(0, saab.getCurrentSpeed());
-
-        Car volvo = new Volvo240();
-        volvo.decrementSpeed(1000);
-        System.out.println(volvo.getCurrentSpeed());
-        assertEquals(0, volvo.getCurrentSpeed());
-    }
 }

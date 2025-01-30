@@ -61,4 +61,5 @@ class Saab95Test {
         Saab95 saab95 = new Saab95();
         assertEquals("Saab95", saab95.getModelName());
     }
+
 }

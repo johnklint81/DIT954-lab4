@@ -91,12 +91,16 @@ public abstract class Car implements Movable {
     // Protected because meant to be overridden and used by subclasses.
     // If they are protected we can still change them in our subclass while
     // preventing external access.
-    protected void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+
+    private void setCurrentSpeed(double speed) {
+        currentSpeed = Math.min(Math.max(speed, 0), getEnginePower());
+    }
+    private void incrementSpeed(double amount) {
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
-    protected void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    private void decrementSpeed(double amount) {
+        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
     public void gas(double amount) {
