@@ -6,7 +6,7 @@ class CarTest {
 
     @Test
     void move() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         double initialX = saab.getCurrentPosition()[0];
         double initialY = saab.getCurrentPosition()[1];
         saab.move();
@@ -16,7 +16,7 @@ class CarTest {
 
     @Test
     void turnLeft() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         double rad = Math.PI / 2;
         saab.turnLeft(rad);
         assertEquals(Math.PI / 2, saab.getCurrentDirection());
@@ -24,7 +24,7 @@ class CarTest {
 
     @Test
     void turnRight() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         double rad = Math.PI / 2;
         saab.turnRight(rad);
         assertEquals(-Math.PI / 2, saab.getCurrentDirection());
@@ -32,58 +32,58 @@ class CarTest {
 
     @Test
     void getNrDoors() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(2, saab.getNrDoors());
     }
 
     @Test
     void getEnginePower() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(125, saab.getEnginePower());
     }
 
     @Test
     void getCurrentSpeed() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(0, saab.getCurrentSpeed());
     }
 
     @Test
     void getCurrentDirection() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(0, saab.getCurrentDirection());
     }
 
     @Test
     void getCurrentPosition() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(0, saab.getCurrentPosition()[0]);
         assertEquals(0, saab.getCurrentPosition()[1]);
     }
 
     @Test
     void getColor() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         assertEquals(Color.BLACK, saab.getColor());
     }
 
     @Test
     void setColor() {
-        Car saab = new Saab95(Color.RED);
+        Car saab = new Saab95();
         saab.setColor(Color.GREEN);
         assertEquals(Color.GREEN, saab.getColor());
     }
 
     @Test
     void startEngine() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         saab.startEngine();
         assertEquals(0.1, saab.currentSpeed);
     }
 
     @Test
     void stopEngine() {
-        Car saab = new Saab95(Color.BLUE);
+        Car saab = new Saab95();
         saab.stopEngine();
         assertEquals(0, saab.currentSpeed);
     }
@@ -92,13 +92,11 @@ class CarTest {
     void speedFactor() {
         // Create an anonymous subclass just for testing.
         // Allows us to instantiate an abstract subclass.
-        Car car = new Car(Color.BLACK) {};
-        assertEquals(1, car.speedFactor());
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         // enginePower = 125, turbo = off,
         // speed is 125 * 0.01 * 1 = 1.25
         assertEquals(1.25, saab.speedFactor());
-        Car volvo = new Volvo240(Color.RED);
+        Car volvo = new Volvo240();
         // enginePower = 100, trimFactor = 1.25
         // speed is 100 * 0.01 * 1.25 = 1.25
         assertEquals(1.25, volvo.speedFactor());
@@ -106,12 +104,12 @@ class CarTest {
 
     @Test
     void incrementSpeed() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         saab.incrementSpeed(1000);
         System.out.println(saab.getCurrentSpeed());
         assertEquals(saab.getEnginePower(), saab.getCurrentSpeed());
 
-        Car volvo = new Volvo240(Color.GRAY);
+        Car volvo = new Volvo240();
         volvo.incrementSpeed(1000);
         System.out.println(volvo.getCurrentSpeed());
         assertEquals(volvo.getEnginePower(), volvo.getCurrentSpeed());
@@ -119,12 +117,12 @@ class CarTest {
 
     @Test
     void decrementSpeed() {
-        Car saab = new Saab95(Color.BLACK);
+        Car saab = new Saab95();
         saab.decrementSpeed(1000);
         System.out.println(saab.getCurrentSpeed());
         assertEquals(0, saab.getCurrentSpeed());
 
-        Car volvo = new Volvo240(Color.BLACK);
+        Car volvo = new Volvo240();
         volvo.decrementSpeed(1000);
         System.out.println(volvo.getCurrentSpeed());
         assertEquals(0, volvo.getCurrentSpeed());

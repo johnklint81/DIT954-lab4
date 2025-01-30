@@ -4,21 +4,27 @@ public abstract class Car implements Movable {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
-    protected double[] currentPosition = {0, 0};
+    protected double[] currentPosition = {0, 0};    // (x, y)
     protected double currentDirection = 0; // Angle in degrees (from unit vector perspective)
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed = 0; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
+
     // Should not be a property of car, but for now it is
     // Maybe this is what is found as 0.01 in speedFactor?
     // protected final static double timestep = 0.1;
 
     // Constructor, maybe we should have more fields in this one?
-    // I don't like that the subclasses initialises nrDoors, enginePower, etc
-    protected Car(Color color) {
+    // I don't like that the subclasses initialises nrDoors, enginePower, etc,
+    // to hard-coded values.
+    protected Car(int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
         this.color = color;
+        this.modelName = modelName;
+        stopEngine();
     }
     // Override is strictly speaking not necessary here since we implement
     // the required method by the interface for the first time. But it is not
@@ -77,10 +83,8 @@ public abstract class Car implements Movable {
         currentSpeed = 0;
     }
     // Protected because it is not meant to be changed directly by the user.
-    // 1 is just a default value.
-    protected double speedFactor() {
-        return 1;
-    }
+    // Abstract because it can change depending on model of car
+    protected abstract double speedFactor();
     // Protected because meant to be overridden and used by subclasses.
     // If they are protected we can still change them in our subclass while
     // preventing external access.
@@ -90,5 +94,19 @@ public abstract class Car implements Movable {
 
     protected void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    }
+
+    public void gas(double amount) {
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("gas amount must be in interval [0, 1].");
+        }
+        incrementSpeed(amount);
+    }
+
+    public void brake(double amount) {
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("brake amount must be in interval [0, 1].");
+        }
+        decrementSpeed(amount);
     }
 }
