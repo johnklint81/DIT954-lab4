@@ -27,13 +27,17 @@ public class Saab95 extends Car {
         return enginePower * 0.01 * turbo;
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount) {
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("gas amount must be in interval [0, 1].");
+        }
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("brake amount must be in interval [0, 1].");
+        }
         decrementSpeed(amount);
     }
 }

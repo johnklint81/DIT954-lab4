@@ -4,11 +4,11 @@ public abstract class Car implements Movable {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
-    protected double[] currentPosition;
-    protected double currentDirection; // Angle in degrees (from unit vector perspective)
+    protected double[] currentPosition = {0, 0};
+    protected double currentDirection = 0; // Angle in degrees (from unit vector perspective)
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
+    protected double currentSpeed = 0; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
     // Should not be a property of car, but for now it is
