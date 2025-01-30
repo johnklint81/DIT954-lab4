@@ -12,7 +12,8 @@ public abstract class Car implements Movable {
     protected Color color; // Color of the car
     protected String modelName; // The car model name
     // Should not be a property of car, but for now it is
-    protected final static double timestep = 0.1;
+    // Maybe this is what is found as 0.01 in speedFactor?
+    // protected final static double timestep = 0.1;
 
     // Constructor, maybe we should have more fields in this one?
     // I don't like that the subclasses initialises nrDoors, enginePower, etc
@@ -27,7 +28,7 @@ public abstract class Car implements Movable {
         // currentPosition is a 2D array: [x, y]
         // atan2 gives us signed direction in radians
         double direction = Math.atan2(currentPosition[1], currentPosition[0]);
-        double positionChange = getCurrentSpeed() * timestep;
+        double positionChange = getCurrentSpeed();
 
         currentPosition[0] += positionChange * Math.cos(direction);
         currentPosition[1] += positionChange * Math.sin(direction);
