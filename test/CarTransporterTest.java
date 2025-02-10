@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class CarTransporterTest {
     private CarTransporter transporter;
     private Volvo240 volvo;
@@ -8,7 +10,7 @@ public class CarTransporterTest {
 
     @BeforeEach
     void setUp() {
-        transporter = new CarTransporter();
+        transporter = new CarTransporter(4);
         volvo = new Volvo240();
         saab = new Saab95();
     }
@@ -34,7 +36,7 @@ public class CarTransporterTest {
     @Test
     void testLoadCarWhenClose() {
         transporter.lowerRamp();
-        assertTrue(transporter.loadCar(volvo));
+        transporter.loadCar(volvo);
         assertEquals(transporter.getCurrentPosition()[0], volvo.getCurrentPosition()[0], 0.001);
         assertEquals(transporter.getCurrentPosition()[1], volvo.getCurrentPosition()[1], 0.001);
     }
@@ -51,7 +53,7 @@ public class CarTransporterTest {
         for (int i = 0; i < 4; i++) {
             transporter.loadCar(new Volvo240());
         }
-        assertFalse(transporter.loadCar(volvo));
+        assertThrows(IllegalStateException.class, () -> transporter.loadCar(volvo));
     }
 
     @Test
@@ -91,8 +93,8 @@ public class CarTransporterTest {
 
     @Test
     void testCannotLoadTransporterOnTransporter() {
-        CarTransporter anotherTransporter = new CarTransporter();
+        CarTransporter anotherTransporter = new CarTransporter(4);
         transporter.lowerRamp();
-        assertFalse(transporter.loadCar(anotherTransporter));
+        assertThrows(IllegalStateException.class, () -> transporter.loadCar(anotherTransporter));
     }
 } 
