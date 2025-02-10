@@ -4,7 +4,7 @@ public abstract class Car implements Movable {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
-    private double[] currentPosition = {0, 0};    // (x, y)
+    private double[] currentPosition = { 0, 0 }; // (x, y)
     private double currentDirection = 0; // Angle in degrees (from unit vector perspective)
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
@@ -26,28 +26,34 @@ public abstract class Car implements Movable {
         this.modelName = modelName;
         stopEngine();
     }
+
     // Override is strictly speaking not necessary here since we implement
     // the required method by the interface for the first time. But it is not
     // wrong either.
     @Override
     public void move() {
-        // currentPosition is a 2D array: [x, y]
-        // atan2 gives us signed direction in radians
-        double direction = Math.atan2(currentPosition[1], currentPosition[0]);
-        double positionChange = getCurrentSpeed();
+        if (canMove()) {
+            double direction = Math.atan2(currentPosition[1], currentPosition[0]);
+            double positionChange = getCurrentSpeed();
 
-        currentPosition[0] += positionChange * Math.cos(direction);
-        currentPosition[1] += positionChange * Math.sin(direction);
+            currentPosition[0] += positionChange * Math.cos(direction);
+            currentPosition[1] += positionChange * Math.sin(direction);
+        } else {
+            throw new IllegalStateException("Cannot move in current state");
+        }
     }
+
     // We could use radians below if we wanted to
     @Override
     public void turnLeft(double angle) {
         currentDirection = (currentDirection + angle) % 360;
     }
+
     @Override
     public void turnRight(double angle) {
         currentDirection = (currentDirection - angle) % 360;
     }
+
     public int getNrDoors() {
         return nrDoors;
     }
@@ -63,6 +69,7 @@ public abstract class Car implements Movable {
     public double getCurrentDirection() {
         return currentDirection;
     }
+
     public double[] getCurrentPosition() {
         return currentPosition;
     }
@@ -70,6 +77,7 @@ public abstract class Car implements Movable {
     public Color getColor() {
         return color;
     }
+
     public String getModelName() {
         return modelName;
     }
@@ -85,6 +93,7 @@ public abstract class Car implements Movable {
     public void stopEngine() {
         currentSpeed = 0;
     }
+
     // Protected because it is not meant to be changed directly by the user.
     // Abstract because it can change depending on model of car
     protected abstract double speedFactor();
@@ -93,14 +102,23 @@ public abstract class Car implements Movable {
     // preventing external access.
 
     private void setCurrentSpeed(double speed) {
+        if (!canMove() && Math.abs(speed) > 0) {
+            throw new IllegalStateException("Vehicle cannot move in current state");
+        }
+
         currentSpeed = Math.min(Math.max(speed, 0), getEnginePower());
     }
+
     private void incrementSpeed(double amount) {
         setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     private void decrementSpeed(double amount) {
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+    }
+
+    public boolean canMove() {
+        return true;
     }
 
     public void gas(double amount) {
