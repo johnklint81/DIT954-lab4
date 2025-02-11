@@ -3,13 +3,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CarWorkshopTest {
+public class MotorVehicleWorkshopTest {
+    private static final int MAX_CARS = 3;
     private CarWorkshop<Car> workshop;
-    private final int MAX_CARS = 3;
+    private CarWorkshop<Volvo240> volvoWorkshop;
 
     @BeforeEach
     public void setUp() {
         workshop = new CarWorkshop<>(MAX_CARS);
+        volvoWorkshop = new CarWorkshop<>(MAX_CARS);
     }
 
     @Test
@@ -31,6 +33,12 @@ public class CarWorkshopTest {
                 workshop.submitCar(new Volvo240());
             }
         });
+    }
+
+    @Test
+    public void testPassengerCarWorkshop() {
+         volvoWorkshop.submitCar(new Volvo240());
+         // volvoWorkshop.submitCar(new Saab95());
     }
 
     @Test

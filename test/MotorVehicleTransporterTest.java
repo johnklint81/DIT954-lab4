@@ -1,9 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CarTransporterTest {
+public class MotorVehicleTransporterTest {
     private CarTransporter transporter;
     private Volvo240 volvo;
     private Saab95 saab;
@@ -37,8 +36,8 @@ public class CarTransporterTest {
     void testLoadCarWhenClose() {
         transporter.lowerRamp();
         transporter.loadCar(volvo);
-        assertEquals(transporter.getCurrentPosition()[0], volvo.getCurrentPosition()[0], 0.001);
-        assertEquals(transporter.getCurrentPosition()[1], volvo.getCurrentPosition()[1], 0.001);
+        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
+        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
     }
 
     @Test
@@ -62,7 +61,7 @@ public class CarTransporterTest {
         transporter.loadCar(volvo);
         transporter.loadCar(saab);
         
-        Car unloadedCar = transporter.unloadCar();
+        MotorVehicle unloadedCar = transporter.unloadCar();
         assertEquals(saab, unloadedCar);
         
         unloadedCar = transporter.unloadCar();
@@ -87,14 +86,7 @@ public class CarTransporterTest {
         transporter.gas(0.5);
         transporter.move();
         
-        assertEquals(transporter.getCurrentPosition()[0], volvo.getCurrentPosition()[0], 0.001);
-        assertEquals(transporter.getCurrentPosition()[1], volvo.getCurrentPosition()[1], 0.001);
+        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
+        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
     }
-
-    @Test
-    void testCannotLoadTransporterOnTransporter() {
-        CarTransporter anotherTransporter = new CarTransporter(4);
-        transporter.lowerRamp();
-        assertThrows(IllegalStateException.class, () -> transporter.loadCar(anotherTransporter));
-    }
-} 
+}

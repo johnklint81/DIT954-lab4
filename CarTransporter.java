@@ -1,17 +1,18 @@
 import java.awt.*;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class CarTransporter extends Car {
+public class CarTransporter extends Truck {
   private static final double LOADING_DISTANCE = 1.0;
 
   private final Ramp ramp;
-  private final Stack<Car> loadedCars;
+  private final Deque<Car> loadedCars;
   private final int maxCars;
 
   public CarTransporter(int maxCars) {
     super(2, 200, Color.BLUE, "CarTransporter");
     this.ramp = new Ramp();
-    this.loadedCars = new Stack<>();
+    this.loadedCars = new ArrayDeque<>();
     this.maxCars = maxCars;
   }
 
@@ -41,9 +42,7 @@ public class CarTransporter extends Car {
   }
 
   private boolean isCloseEnough(Car car) {
-    double dx = getCurrentPosition()[0] - car.getCurrentPosition()[0];
-    double dy = getCurrentPosition()[1] - car.getCurrentPosition()[1];
-    return Math.sqrt(dx * dx + dy * dy) <= LOADING_DISTANCE;
+    return getPos().distanceTo(car.getPos()) <= LOADING_DISTANCE;
   }
 
   public void loadCar(Car car) {
@@ -53,9 +52,6 @@ public class CarTransporter extends Car {
     if (loadedCars.size() >= maxCars) {
       throw new IllegalStateException("Cannot load more cars");
     }
-    if (car instanceof CarTransporter) {
-      throw new IllegalStateException("Cannot load another car transporter");
-    }
     if (!isCloseEnough(car)) {
       throw new IllegalStateException("Car is not close enough to the transporter");
     }
@@ -64,7 +60,7 @@ public class CarTransporter extends Car {
     updateCarPosition(car);
   }
 
-  public Car unloadCar() {
+  public MotorVehicle unloadCar() {
     if (!ramp.isDown()) {
       throw new IllegalStateException("Cannot unload car when ramp is up");
     }
@@ -72,12 +68,12 @@ public class CarTransporter extends Car {
       throw new IllegalStateException("No cars to unload");
     }
 
-    Car car = loadedCars.pop();
+    MotorVehicle car = loadedCars.pop();
     // Place the car slightly behind the transporter on the X axis
-    double[] position = getCurrentPosition().clone();
-    position[0] -= LOADING_DISTANCE;
-    car.getCurrentPosition()[0] = position[0];
-    car.getCurrentPosition()[1] = position[1];
+    Vec2 position = getPos().copy();
+    position.add(-LOADING_DISTANCE, 0);
+
+    car.getPos().setPos(position);
     return car;
   }
 
@@ -85,13 +81,12 @@ public class CarTransporter extends Car {
   public void move() {
     super.move();
     // Update positions of all loaded cars
-    for (Car car : loadedCars) {
+    for (MotorVehicle car : loadedCars) {
       updateCarPosition(car);
     }
   }
 
-  private void updateCarPosition(Car car) {
-    car.getCurrentPosition()[0] = getCurrentPosition()[0];
-    car.getCurrentPosition()[1] = getCurrentPosition()[1];
+  private void updateCarPosition(MotorVehicle car) {
+    car.getPos().setPos(getPos());
   }
 }
