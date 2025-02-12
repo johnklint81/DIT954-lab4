@@ -7,11 +7,11 @@ public class TruckBed {
   }
 
   public void raise(double amount) {
-    setAngle(angle - amount);
+    setAngle(angle + amount);
   }
 
   public void lower(double amount) {
-    setAngle(angle + amount);
+    setAngle(angle - amount);
   }
 
   public double getAngle() {
