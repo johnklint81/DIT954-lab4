@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public final class Vec2 {
     private double x;
     private double y;
@@ -28,16 +26,21 @@ public final class Vec2 {
         this.y += y;
     }
 
+
+    public void add(Vec2 other) {
+        add(other.x, other.y);
+    }
+
     public Vec2 copy() {
         return new Vec2(x, y);
     }
 
 
-    public double x() {
+    public double getX() {
         return x;
     }
 
-    public double y() {
+    public double getY() {
         return y;
     }
 }
