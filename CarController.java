@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
-* Its responsibilities are to listen to the View and responds in a appropriate manner by
+* Its responsibilities are to listen to the View and responds in an appropriate manner by
 * modifying the model state and the updating the view.
  */
 

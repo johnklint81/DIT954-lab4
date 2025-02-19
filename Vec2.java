@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public final class Vec2 {
     private double x;
     private double y;

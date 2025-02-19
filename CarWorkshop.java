@@ -6,6 +6,10 @@ public class CarWorkshop<T extends Car> {
     private final Vec2 pos;
     public static final Vec2 SIZE = new Vec2(101, 96);
 
+    public CarWorkshop(int maxCars) {
+        this(maxCars, new Vec2(0, 0));
+    }
+
     public CarWorkshop(int maxCars, Vec2 pos) {
         this.cars = new ArrayList<>();
         this.maxCars = maxCars;
