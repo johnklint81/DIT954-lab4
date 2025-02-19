@@ -28,6 +28,11 @@ public final class Vec2 {
         this.y += y;
     }
 
+
+    public void add(Vec2 other) {
+        add(other.x, other.y);
+    }
+
     public Vec2 copy() {
         return new Vec2(x, y);
     }

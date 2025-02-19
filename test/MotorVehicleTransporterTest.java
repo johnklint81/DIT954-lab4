@@ -36,8 +36,8 @@ public class MotorVehicleTransporterTest {
     void testLoadCarWhenClose() {
         transporter.lowerRamp();
         transporter.loadCar(volvo);
-        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
-        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
+        assertEquals(transporter.getPos().getX(), volvo.getPos().getX(), 0.001);
+        assertEquals(transporter.getPos().getY(), volvo.getPos().getY(), 0.001);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class MotorVehicleTransporterTest {
         transporter.gas(0.5);
         transporter.move();
         
-        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
-        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
+        assertEquals(transporter.getPos().getX(), volvo.getPos().getX(), 0.001);
+        assertEquals(transporter.getPos().getY(), volvo.getPos().getY(), 0.001);
     }
 }
