@@ -33,11 +33,11 @@ public final class Vec2 {
     }
 
 
-    public double x() {
+    public double getX() {
         return x;
     }
 
-    public double y() {
+    public double getY() {
         return y;
     }
 }

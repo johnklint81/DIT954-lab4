@@ -33,7 +33,7 @@ public abstract class MotorVehicle implements Movable {
     @Override
     public void move() {
         if (canMove()) {
-            double direction = Math.atan2(pos.y(), pos.x());
+            double direction = Math.atan2(pos.getY(), pos.getX());
             double positionChange = getCurrentSpeed();
 
             pos.add(positionChange * Math.cos(direction), positionChange * Math.sin(direction));
