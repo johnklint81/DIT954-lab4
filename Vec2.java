@@ -2,6 +2,8 @@ public final class Vec2 {
     private double x;
     private double y;
 
+    static Vec2 ZERO = new Vec2(0,0);
+
     public Vec2(double x, double y) {
         this.x = x;
         this.y = y;

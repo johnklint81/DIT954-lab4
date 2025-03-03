@@ -42,8 +42,8 @@ public class CarWorkshop<T extends Car> {
     public boolean collidesWith(Car car) {
         var carX = car.getPos().getX();
         var carY = car.getPos().getY();
-        var carWidth = CarController.CAR_SIZE.getX();
-        var carHeight = CarController.CAR_SIZE.getY();
+        var carWidth = car.getSize().getX();
+        var carHeight = car.getSize().getY();
 
         var workshopX = pos.getX();
         var workshopY = pos.getY();

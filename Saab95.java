@@ -1,13 +1,15 @@
 import java.awt.*;
 
-public class Saab95 extends Car {
+public class Saab95 extends Car implements TurboObserver {
 
     private boolean turboOn;
 
-    protected Saab95() {
-        super(2, 125, Color.BLACK, "Saab95");
+    protected Saab95(ModelFacade model) {
+        super(model, 2, 125, Color.BLACK, "Saab95");
         turboOn = false;
+        model.listenTurbo(this);
     }
+
     public boolean getTurboOn() {
         return turboOn;
     }
@@ -26,4 +28,12 @@ public class Saab95 extends Car {
         return getEnginePower() * 0.01 * turbo;
     }
 
+    @Override
+    public void setTurbo(boolean newState) {
+        if (newState) {
+            setTurboOn();
+        } else {
+            setTurboOff();
+        }
+    }
 }

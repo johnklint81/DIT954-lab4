@@ -9,8 +9,8 @@ public class CarTransporter extends Truck {
   private final Deque<Car> loadedCars;
   private final int maxCars;
 
-  public CarTransporter(int maxCars) {
-    super(2, 200, Color.BLUE, "CarTransporter");
+  public CarTransporter(ModelFacade model, int maxCars) {
+    super(model, 2, 200, Color.BLUE, "CarTransporter");
     this.ramp = new Ramp();
     this.loadedCars = new ArrayDeque<>();
     this.maxCars = maxCars;
@@ -78,8 +78,8 @@ public class CarTransporter extends Truck {
   }
 
   @Override
-  public void move() {
-    super.move();
+  public void tick() {
+    super.tick();
     // Update positions of all loaded cars
     for (MotorVehicle car : loadedCars) {
       updateCarPosition(car);

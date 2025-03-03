@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -5,17 +6,22 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Saab95Test {
+    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    Saab95 saab95;
+
+    @BeforeEach
+    void before() {
+        saab95 = new Saab95(model);
+    }
 
     @Test
     void setTurboOn() {
-        Saab95 saab95 = new Saab95();
         saab95.setTurboOn();
         assertTrue(saab95.getTurboOn());
     }
 
     @Test
     void setTurboOff() {
-        Saab95 saab95 = new Saab95();
         saab95.setTurboOn();
         saab95.setTurboOff();
         assertFalse(saab95.getTurboOn());
@@ -23,7 +29,6 @@ class Saab95Test {
 
     @Test
     void speedFactor() {
-        Saab95 saab95 = new Saab95();
         saab95.setTurboOn();
         double turboOnValue = 1.3 * saab95.getEnginePower() * 0.01;
         assertEquals(turboOnValue, saab95.speedFactor());
@@ -34,7 +39,6 @@ class Saab95Test {
 
     @Test
     void gas() {
-        Saab95 saab95 = new Saab95();
         double amount = 0.9;
         double currentSpeed = saab95.getCurrentSpeed();
         saab95.gas(amount);
@@ -46,7 +50,6 @@ class Saab95Test {
 
     @Test
     void brake() {
-        Saab95 saab95 = new Saab95();
         double amount = 0.9;
         double currentSpeed = saab95.getCurrentSpeed();
         saab95.brake(amount);
@@ -58,7 +61,6 @@ class Saab95Test {
     }
     @Test
     void getModelName() {
-        Saab95 saab95 = new Saab95();
         assertEquals("Saab95", saab95.getModelName());
     }
 

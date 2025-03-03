@@ -15,16 +15,16 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(500,50);
-    CarController cc;
+    ModelFacade model;
 
     Map<Class<?>, BufferedImage> images = new HashMap<>();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, CarController cc) {
+    public DrawPanel(ModelFacade model, int x, int y) {
+        this.model = model;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        this.cc = cc;
 
         var map = new HashMap<Class<?>, String>();
 
@@ -54,10 +54,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
 
-        for (MotorVehicle car : cc.cars) {
+        for (MotorVehicle car : model.cars) {
             g.drawImage(images.getOrDefault(car.getClass(), images.get(Volvo240.class)), (int)car.getPos().getX(), (int)car.getPos().getY(), null); // see javadoc for more info on the parameters
         }
     }

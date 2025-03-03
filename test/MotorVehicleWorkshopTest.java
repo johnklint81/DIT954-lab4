@@ -7,6 +7,7 @@ public class MotorVehicleWorkshopTest {
     private static final int MAX_CARS = 3;
     private CarWorkshop<Car> workshop;
     private CarWorkshop<Volvo240> volvoWorkshop;
+    ModelFacade model = new ModelFacade(Vec2.ZERO);
 
     @BeforeEach
     public void setUp() {
@@ -16,7 +17,7 @@ public class MotorVehicleWorkshopTest {
 
     @Test
     public void testSubmitCar() {
-        Volvo240 car = new Volvo240();
+        Volvo240 car = new Volvo240(model);
         workshop.submitCar(car);
         assertTrue(workshop.hasCar(car));
         workshop.retrieveCar(car);
@@ -30,20 +31,20 @@ public class MotorVehicleWorkshopTest {
     public void testWorkshopFullException() {
         assertThrows(IllegalStateException.class, () -> {
             for (int i = 0; i <= MAX_CARS; i++) {
-                workshop.submitCar(new Volvo240());
+                workshop.submitCar(new Volvo240(model));
             }
         });
     }
 
     @Test
     public void testPassengerCarWorkshop() {
-         volvoWorkshop.submitCar(new Volvo240());
+         volvoWorkshop.submitCar(new Volvo240(model));
          // volvoWorkshop.submitCar(new Saab95());
     }
 
     @Test
     public void testRetrieveNonSubmittedCarWorkshop() {
-        Volvo240 car = new Volvo240();
+        Volvo240 car = new Volvo240(model);
         assertThrows(IllegalArgumentException.class, () -> workshop.retrieveCar(car));
     }
 }
