@@ -1,10 +1,9 @@
 import java.awt.*;
 
-public abstract class MotorVehicle implements Movable {
+public abstract class MotorVehicle extends Entity implements EngineObserver {
     // We need to discuss whether we want to use interfaces also...
     // Inheritance is nice here because the subclasses share a lot of functionality
 
-    private Vec2 pos; // (x, y)
     private double currentDirection = 0; // Angle in radians (from unit vector perspective)
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
@@ -19,32 +18,41 @@ public abstract class MotorVehicle implements Movable {
     // Constructor, maybe we should have more fields in this one?
     // I don't like that the subclasses initialises nrDoors, enginePower, etc,
     // to hard-coded values.
-    protected MotorVehicle(int nrDoors, double enginePower, Color color, String modelName) {
+    protected MotorVehicle(ModelFacade model, int nrDoors, double enginePower, Color color, String modelName) {
+        super(model, Vec2.ZERO, new Vec2(100, 60));
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
-        this.pos = new Vec2(0, 0);
+        model.listenTick(this);
+        model.listenEngine(this);
         stopEngine();
+    }
+
+    @Override
+    public void setEngine(boolean newState) {
+        if (newState) {
+            startEngine();
+        } else {
+            stopEngine();
+        }
     }
 
     // Override is strictly speaking not necessary here since we implement
     // the required method by the interface for the first time. But it is not
     // wrong either.
     @Override
-    public void move() {
+    public void tick() {
         if (canMove()) {
             double positionChange = getCurrentSpeed();
-            pos.add(positionChange * Math.cos(currentDirection), positionChange * Math.sin(currentDirection));
+            getPos().add(positionChange * Math.cos(currentDirection), positionChange * Math.sin(currentDirection));
         }
     }
 
-    @Override
     public void turnLeft(double angle) {
         currentDirection = (currentDirection + angle);
     }
 
-    @Override
     public void turnRight(double angle) {
         currentDirection = (currentDirection - angle);
     }
@@ -65,13 +73,6 @@ public abstract class MotorVehicle implements Movable {
         return currentDirection;
     }
 
-    public Vec2 getPos() {
-        return pos;
-    }
-
-    public void setPos(Vec2 newPos) {
-        pos = newPos;
-    }
 
     public Color getColor() {
         return color;

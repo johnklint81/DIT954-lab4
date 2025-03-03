@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -5,17 +6,22 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Volvo240Test {
+    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    Volvo240 volvo240;
+
+    @BeforeEach
+    void before() {
+        volvo240 = new Volvo240(model);
+    }
 
     @Test
     void speedFactor() {
-        Volvo240 volvo240 = new Volvo240();
         double speedValue = Volvo240.trimFactor * volvo240.getEnginePower() * 0.01;
         assertEquals(speedValue, volvo240.speedFactor());
     }
 
     @Test
     void gas() {
-        Volvo240 volvo240 = new Volvo240();
         double amount = 0.9;
         double currentSpeed = volvo240.getCurrentSpeed();
         volvo240.gas(amount);
@@ -27,7 +33,6 @@ class Volvo240Test {
 
     @Test
     void brake() {
-        Volvo240 volvo240 = new Volvo240();
         double amount = 0.9;
         double currentSpeed = volvo240.getCurrentSpeed();
         volvo240.brake(amount);
@@ -40,7 +45,6 @@ class Volvo240Test {
     }
     @Test
     void getModelName() {
-        Volvo240 volvo240 = new Volvo240();
         assertEquals("Volvo240", volvo240.getModelName());
     }
 

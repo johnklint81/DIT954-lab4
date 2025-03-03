@@ -1,12 +1,13 @@
 import java.awt.*;
 
-public class Scania extends Truck {
+public class Scania extends Truck implements BedObserver {
 
   private final TruckBed truckBed;
 
-  protected Scania() {
-    super(2, 100, Color.WHITE, "Scania");
+  protected Scania(ModelFacade model)  {
+    super(model, 2, 100, Color.WHITE, "Scania");
     truckBed = new TruckBed();
+    model.listenBed(this);
   }
 
   @Override

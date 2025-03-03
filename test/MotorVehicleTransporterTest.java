@@ -6,12 +6,13 @@ public class MotorVehicleTransporterTest {
     private CarTransporter transporter;
     private Volvo240 volvo;
     private Saab95 saab;
+    ModelFacade model = new ModelFacade(Vec2.ZERO);
 
     @BeforeEach
     void setUp() {
-        transporter = new CarTransporter(4);
-        volvo = new Volvo240();
-        saab = new Saab95();
+        transporter = new CarTransporter(model, 4);
+        volvo = new Volvo240(model);
+        saab = new Saab95(model);
     }
 
     @Test
@@ -50,7 +51,7 @@ public class MotorVehicleTransporterTest {
         transporter.lowerRamp();
         // Load max number of cars
         for (int i = 0; i < 4; i++) {
-            transporter.loadCar(new Volvo240());
+            transporter.loadCar(new Volvo240(model));
         }
         assertThrows(IllegalStateException.class, () -> transporter.loadCar(volvo));
     }
@@ -84,7 +85,7 @@ public class MotorVehicleTransporterTest {
         transporter.raiseRamp();
         
         transporter.gas(0.5);
-        transporter.move();
+        transporter.tick();
         
         assertEquals(transporter.getPos().getX(), volvo.getPos().getX(), 0.001);
         assertEquals(transporter.getPos().getY(), volvo.getPos().getY(), 0.001);
