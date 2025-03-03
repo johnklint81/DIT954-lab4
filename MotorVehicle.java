@@ -45,7 +45,9 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
     public void tick() {
         if (canMove()) {
             double positionChange = getCurrentSpeed();
-            getPos().add(positionChange * Math.cos(currentDirection), positionChange * Math.sin(currentDirection));
+            double xOffset = positionChange * Math.cos(currentDirection);
+            double yOffset =  positionChange * Math.sin(currentDirection);
+            setPos(getPos().add(xOffset,yOffset));
         }
     }
 
