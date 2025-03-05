@@ -11,6 +11,7 @@ public class ModelFacade {
     ModelFacade(Vec2 worldSize) {
         this.worldSize = worldSize;
     }
+    Vec2 getWorldSize() {return worldSize;}
 
     void listenTick(TickObserver observer) {
         tickObservers.add(observer);

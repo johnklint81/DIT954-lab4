@@ -1,16 +1,17 @@
 import java.util.*;
 
-public class CarWorkshop<T extends Car> {
+public class CarWorkshop<T extends Car> extends Entity {
     private final ArrayList<T> cars;
     private final int maxCars;
     private final Vec2 pos;
     public static final Vec2 SIZE = new Vec2(101, 96);
 
-    public CarWorkshop(int maxCars) {
-        this(maxCars, new Vec2(0, 0));
+    public CarWorkshop(ModelFacade model, int maxCars) {
+        this(model, maxCars, new Vec2(0, 0));
     }
 
-    public CarWorkshop(int maxCars, Vec2 pos) {
+    public CarWorkshop(ModelFacade model, int maxCars, Vec2 pos) {
+        super(model, pos, SIZE);
         this.cars = new ArrayList<>();
         this.maxCars = maxCars;
         this.pos = pos;
@@ -39,22 +40,17 @@ public class CarWorkshop<T extends Car> {
         cars.remove(car);
     }
 
-    public boolean collidesWith(Car car) {
-        var carX = car.getPos().getX();
-        var carY = car.getPos().getY();
-        var carWidth = car.getSize().getX();
-        var carHeight = car.getSize().getY();
-
-        var workshopX = pos.getX();
-        var workshopY = pos.getY();
-        var workshopWidth = CarWorkshop.SIZE.getX();
-        var workshopHeight = CarWorkshop.SIZE.getY();
-
-        // Check for collision using Axis-Aligned Bounding Box (AABB)
-        boolean xOverlap = carX < workshopX + workshopWidth && carX + carWidth > workshopX;
-        boolean yOverlap = carY < workshopY + workshopHeight && carY + carHeight > workshopY;
-
-        return xOverlap && yOverlap;
+    public void tick() {
+        for (MotorVehicle vehicle : model.cars) {
+            if (vehicle instanceof Volvo240) {
+                // Safe cast because T extends Car
+                T car = (T) vehicle;
+                if (CollisionChecker.collides(this, car)) {
+                    car.setInWorkshop(true);
+                    car.setPos(pos);
+                }
+            }
+        }
     }
 
     public boolean hasCar(T car) {

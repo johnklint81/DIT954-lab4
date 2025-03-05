@@ -12,7 +12,6 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(500,50);
     ModelFacade model;

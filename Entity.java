@@ -1,8 +1,10 @@
 public abstract class Entity implements TickObserver {
     private Vec2 pos, size;
+    ModelFacade model;
     Entity(ModelFacade model, Vec2 pos, Vec2 size) {
         this.pos = pos;
         this.size = size;
+        this.model = model;
 
         model.listenTick(this);
     }

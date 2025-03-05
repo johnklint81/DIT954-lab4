@@ -11,11 +11,12 @@ public class CarController {
     CarView view;
     int amount = 0;
     int offset = 0;
-    CarWorkshop<Volvo240> volvoWorkshop = new CarWorkshop<>(3, new Vec2(500, 50));
+    CarWorkshop<Volvo240> volvoWorkshop;
 
     CarController(ModelFacade model, CarView view) {
         this.model = model;
         this.view = view;
+        this.volvoWorkshop = new CarWorkshop<>(model,3, new Vec2(500, 50));
         setUpListeners();
     }
 

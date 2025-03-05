@@ -12,7 +12,8 @@ public class Main {
     CarController cc;
 
     Main() {
-        model = new ModelFacade(new Vec2(800, 800));
+        Vec2 worldSize = new Vec2(800, 800);
+        model = new ModelFacade(worldSize);
         view = new CarView("CarSim", model);
         cc = new CarController(model, view);
 

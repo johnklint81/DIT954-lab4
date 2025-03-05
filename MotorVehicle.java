@@ -10,6 +10,7 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
     private double currentSpeed = 0; // The current speed of the car
     private Color color; // Color of the car
     private final String modelName; // The car model name
+    private final Vec2 worldSize;
 
     // Should not be a property of car, but for now it is
     // Maybe this is what is found as 0.01 in speedFactor?
@@ -24,6 +25,7 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        this.worldSize = model.getWorldSize();
         model.listenTick(this);
         model.listenEngine(this);
         stopEngine();
@@ -44,19 +46,22 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
     @Override
     public void tick() {
         if (canMove()) {
+            if (CollisionChecker.outside(this, this.worldSize)) {
+                turnLeft(Math.PI);
+            }
             double positionChange = getCurrentSpeed();
             double xOffset = positionChange * Math.cos(currentDirection);
             double yOffset =  positionChange * Math.sin(currentDirection);
-            setPos(getPos().add(xOffset,yOffset));
+            setPos(getPos().add(xOffset, yOffset));
         }
     }
 
     public void turnLeft(double angle) {
-        currentDirection = (currentDirection + angle);
+        this.currentDirection = (currentDirection + angle);
     }
 
     public void turnRight(double angle) {
-        currentDirection = (currentDirection - angle);
+        this.currentDirection = (currentDirection - angle);
     }
 
     public int getNrDoors() {
