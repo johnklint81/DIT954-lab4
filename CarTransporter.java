@@ -50,7 +50,7 @@ public class CarTransporter extends Truck {
       throw new IllegalStateException("Cannot load car when ramp is up");
     }
     if (loadedCars.size() >= maxCars) {
-      throw new IllegalStateException("Cannot load more cars");
+      throw new IllegalStateException("Cannot load more entityRepository");
     }
     if (!isCloseEnough(car)) {
       throw new IllegalStateException("Car is not close enough to the transporter");
@@ -65,7 +65,7 @@ public class CarTransporter extends Truck {
       throw new IllegalStateException("Cannot unload car when ramp is up");
     }
     if (loadedCars.isEmpty()) {
-      throw new IllegalStateException("No cars to unload");
+      throw new IllegalStateException("No entityRepository to unload");
     }
 
     MotorVehicle car = loadedCars.pop();
@@ -80,7 +80,7 @@ public class CarTransporter extends Truck {
   @Override
   public void tick() {
     super.tick();
-    // Update positions of all loaded cars
+    // Update positions of all loaded entityRepository
     for (MotorVehicle car : loadedCars) {
       updateCarPosition(car);
     }

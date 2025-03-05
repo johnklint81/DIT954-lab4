@@ -49,7 +49,7 @@ public class MotorVehicleTransporterTest {
     @Test
     void testCannotLoadWhenFull() {
         transporter.lowerRamp();
-        // Load max number of cars
+        // Load max number of entityRepository
         for (int i = 0; i < 4; i++) {
             transporter.loadCar(new Volvo240(model));
         }

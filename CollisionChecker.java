@@ -1,4 +1,5 @@
 public abstract class CollisionChecker {
+
     public static boolean collides(Entity entity1, Entity entity2) {
         var entity1X = entity1.getPos().getX();
         var entity1Y = entity1.getPos().getY();
@@ -16,6 +17,7 @@ public abstract class CollisionChecker {
 
         return xOverlap && yOverlap;
     }
+
     public static boolean outside(Entity entity, Vec2 panelSize) {
         double x = entity.getPos().getX();
         double y = entity.getPos().getX();

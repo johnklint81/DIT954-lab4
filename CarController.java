@@ -33,7 +33,7 @@ public class CarController {
     }
 
     void addCar(MotorVehicle car) {
-        model.cars.add(car);
+        model.entityRepository.add(car);
         car.setPos(new Vec2(0, offset));
         offset += 100;
     }

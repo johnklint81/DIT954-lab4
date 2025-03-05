@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class ModelFacade {
-    ArrayList<MotorVehicle> cars = new ArrayList<>();
+public class ModelFacade implements EntityRepository {
+    ArrayList<Entity> entityRepository = new ArrayList<>();
     ArrayList<TickObserver> tickObservers = new ArrayList<>();
     ArrayList<EngineObserver> engineObservers = new ArrayList<>();
     ArrayList<TurboObserver> turboObservers = new ArrayList<>();
@@ -11,6 +11,7 @@ public class ModelFacade {
     ModelFacade(Vec2 worldSize) {
         this.worldSize = worldSize;
     }
+
     Vec2 getWorldSize() {return worldSize;}
 
     void listenTick(TickObserver observer) {
@@ -55,5 +56,18 @@ public class ModelFacade {
 
     void setTurbos(boolean newState) {
         turboObservers.forEach(e -> e.setTurbo(newState));
+    }
+
+    public void add(Entity entity) {entityRepository.add(entity); }
+
+    public void remove(Entity entity) {entityRepository.remove(entity); }
+
+    public Entity[] list() {
+        int size = this.entityRepository.size();
+        Entity[] entityArray = new Entity[size];
+        for (int i = 0; i < size; i++) {
+            entityArray[i] = this.entityRepository.get(i);
+        }
+        return entityArray;
     }
 }
