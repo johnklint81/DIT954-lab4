@@ -41,7 +41,7 @@ public class CarWorkshop<T extends Car> extends Entity {
     }
 
     public void tick() {
-        for (MotorVehicle vehicle : model.cars) {
+        for (Entity vehicle : model.entityRepository) {
             if (vehicle instanceof Volvo240) {
                 // Safe cast because T extends Car
                 T car = (T) vehicle;

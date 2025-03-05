@@ -32,8 +32,8 @@ public class CarView extends JFrame{
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    JButton startButton = new JButton("Start all entityRepository");
+    JButton stopButton = new JButton("Stop all entityRepository");
 
     // Constructor
     public CarView(String frameName, ModelFacade model){
