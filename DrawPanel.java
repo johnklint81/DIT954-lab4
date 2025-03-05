@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel{
         this.model = model;
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.green);
+        this.setBackground(Color.pink);
 
         var map = new HashMap<Class<?>, String>();
 
