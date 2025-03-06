@@ -73,7 +73,7 @@ public class CarTransporter extends Truck {
     Vec2 position = getPos().copy();
     position.add(-LOADING_DISTANCE, 0);
 
-    car.getPos().setPos(position);
+    car.setPos(position);
     return car;
   }
 
@@ -87,6 +87,6 @@ public class CarTransporter extends Truck {
   }
 
   private void updateCarPosition(MotorVehicle car) {
-    car.getPos().setPos(getPos());
+    car.setPos(getPos());
   }
 }

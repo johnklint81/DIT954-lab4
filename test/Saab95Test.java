@@ -6,7 +6,7 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Saab95Test {
-    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    ModelFacade model = new ModelFacade(new InMemoryEntityRepository(5), Vec2.ZERO);
     Saab95 saab95;
 
     @BeforeEach

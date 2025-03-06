@@ -6,7 +6,7 @@ public class MotorVehicleTransporterTest {
     private CarTransporter transporter;
     private Volvo240 volvo;
     private Saab95 saab;
-    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    ModelFacade model = new ModelFacade(new InMemoryEntityRepository(5), Vec2.ZERO);
 
     @BeforeEach
     void setUp() {
@@ -30,15 +30,16 @@ public class MotorVehicleTransporterTest {
     @Test
     void testCannotMoveWithRampDown() {
         transporter.lowerRamp();
-        assertThrows(IllegalStateException.class, () -> transporter.gas(0.5));
+        transporter.gas(0.5);
+        assertEquals(transporter.getCurrentSpeed(), 0);
     }
 
     @Test
     void testLoadCarWhenClose() {
         transporter.lowerRamp();
         transporter.loadCar(volvo);
-        assertEquals(transporter.getPos().getX(), volvo.getPos().getX(), 0.001);
-        assertEquals(transporter.getPos().getY(), volvo.getPos().getY(), 0.001);
+        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
+        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
     }
 
     @Test
@@ -87,7 +88,7 @@ public class MotorVehicleTransporterTest {
         transporter.gas(0.5);
         transporter.tick();
         
-        assertEquals(transporter.getPos().getX(), volvo.getPos().getX(), 0.001);
-        assertEquals(transporter.getPos().getY(), volvo.getPos().getY(), 0.001);
+        assertEquals(transporter.getPos().x(), volvo.getPos().x(), 0.001);
+        assertEquals(transporter.getPos().y(), volvo.getPos().y(), 0.001);
     }
 }

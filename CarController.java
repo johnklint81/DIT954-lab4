@@ -11,17 +11,14 @@ public class CarController {
     CarView view;
     int amount = 0;
     int offset = 0;
-    CarWorkshop<Volvo240> volvoWorkshop;
 
     CarController(ModelFacade model, CarView view) {
         this.model = model;
         this.view = view;
-        this.volvoWorkshop = new CarWorkshop<>(Volvo240.class, model,3, new Vec2(500, 50));
         setUpListeners();
     }
 
     private void setUpListeners() {
-        //FIXME: välj sätt att göra
         view.controlPanel.startButton.addActionListener((e) -> model.setEngines(true));
         view.controlPanel.stopButton.addActionListener((e) -> model.setEngines(false));
         view.controlPanel.amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);

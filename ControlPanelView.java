@@ -24,7 +24,7 @@ public class ControlPanelView extends JPanel {
     // Constructor
     public ControlPanelView(ModelFacade model){
         this.model = model;
-        this.x = ((int) model.worldSize.getX());
+        this.x = ((int) model.worldSize.x());
         initComponents();
     }
 

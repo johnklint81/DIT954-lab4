@@ -23,14 +23,6 @@ public class InMemoryEntityRepository implements EntityRepository {
     }
 
     @Override
-    public void remove(Entity entity) {
-        if (entities.isEmpty()) {
-            throw new IllegalStateException("Entity repository is empty");
-        }
-        entities.remove(entity);
-    }
-
-    @Override
     public Entity pop() {
         if (entities.isEmpty()) {
             throw new IllegalStateException("Entity repository is empty");

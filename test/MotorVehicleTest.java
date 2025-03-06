@@ -4,7 +4,7 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MotorVehicleTest {
-    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    ModelFacade model = new ModelFacade(new InMemoryEntityRepository(5), Vec2.ZERO);
     Saab95 saab;
 
     @BeforeEach
@@ -15,11 +15,11 @@ class MotorVehicleTest {
     @Test
     void move() {
         MotorVehicle saab = new Saab95(model);
-        double initialX = saab.getPos().getX();
-        double initialY = saab.getPos().getY();
+        double initialX = saab.getPos().x();
+        double initialY = saab.getPos().y();
         saab.tick();
-        assertEquals(initialX, saab.getPos().getX());
-        assertEquals(initialY, saab.getPos().getY());
+        assertEquals(initialX, saab.getPos().x());
+        assertEquals(initialY, saab.getPos().y());
     }
 
     @Test
@@ -58,8 +58,8 @@ class MotorVehicleTest {
 
     @Test
     void getCurrentPosition() {
-        assertEquals(0, saab.getPos().getX());
-        assertEquals(0, saab.getPos().getY());
+        assertEquals(0, saab.getPos().x());
+        assertEquals(0, saab.getPos().y());
     }
 
     @Test

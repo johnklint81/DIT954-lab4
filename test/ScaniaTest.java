@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ScaniaTest {
-  ModelFacade model = new ModelFacade(Vec2.ZERO);
+  ModelFacade model = new ModelFacade(new InMemoryEntityRepository(5), Vec2.ZERO);
   private Scania scania;
 
   @BeforeEach

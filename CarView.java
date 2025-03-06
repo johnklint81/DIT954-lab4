@@ -1,16 +1,11 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
  * It initializes with being center on the screen and attaching it's controller in it's state.
  * It communicates with the Controller by calling methods of it when an action fires of in
- * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
+ * each of its components.
  **/
 
 public class CarView extends JFrame{
@@ -25,13 +20,13 @@ public class CarView extends JFrame{
     public CarView(String frameName, ModelFacade model){
         this.model = model;
 //        this.controlPanel = new ControlPanelView(this, model);
-        this.x = ((int) model.worldSize.getX());
-        this.y = ((int) model.worldSize.getY());
+        this.x = ((int) model.worldSize.x());
+        this.y = ((int) model.worldSize.y());
 
         drawPanel = new DrawPanel(model, x, y-240);
 
         this.setTitle(frameName);
-        this.setPreferredSize(new Dimension((int) model.worldSize.getX(), (int) model.worldSize.getY()));
+        this.setPreferredSize(new Dimension((int) model.worldSize.x(), (int) model.worldSize.y()));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
