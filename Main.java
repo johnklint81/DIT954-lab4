@@ -13,7 +13,7 @@ public class Main {
 
     Main() {
         Vec2 worldSize = new Vec2(800, 800);
-        model = new ModelFacade(worldSize);
+        model = new ModelFacade(new InMemoryEntityRepository(6), worldSize);
         view = new CarView("CarSim", model);
         cc = new CarController(model, view);
 

@@ -31,12 +31,18 @@ public class CarController {
         view.controlPanel.liftBedButton.addActionListener(e -> model.raiseBeds(10));
         view.controlPanel.turboOffButton.addActionListener(e -> model.setTurbos(false));
         view.controlPanel.turboOnButton.addActionListener(e -> model.setTurbos(true));
-        view.controlPanel.addRandomCarButton.addActionListener(e -> model.addRandomCar());
-        view.controlPanel.removeLastCarButton.addActionListener(e -> model.removeLastCar());
+        view.controlPanel.addRandomCarButton.addActionListener(e -> {
+            model.repository.add(model.factory.createRandomMotorVehicle(offset));
+            offset += 100;
+        });
+        view.controlPanel.removeLastCarButton.addActionListener(e -> {
+            model.repository.pop();
+            offset -= 100;
+        });
     }
 
     void addCar(MotorVehicle car) {
-        model.entityRepository.add(car);
+        model.repository.add(car);
         car.setPos(new Vec2(0, offset));
         offset += 100;
     }

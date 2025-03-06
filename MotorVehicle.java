@@ -110,7 +110,7 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
 
     private void setCurrentSpeed(double speed) {
         if (!canMove() && Math.abs(speed) > 0) {
-            throw new IllegalStateException("Vehicle cannot move in current state");
+           return;
         }
 
         currentSpeed = Math.min(Math.max(speed, 0), getEnginePower());

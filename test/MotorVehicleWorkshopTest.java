@@ -7,7 +7,7 @@ public class MotorVehicleWorkshopTest {
     private static final int MAX_CARS = 3;
     private CarWorkshop<Car> workshop;
     private CarWorkshop<Volvo240> volvoWorkshop;
-    ModelFacade model = new ModelFacade(Vec2.ZERO);
+    ModelFacade model = new ModelFacade(new InMemoryEntityRepository(5), Vec2.ZERO);
 
     @BeforeEach
     public void setUp() {

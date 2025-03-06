@@ -43,7 +43,7 @@ public class CarWorkshop<T extends Car> extends Entity {
     }
 
     public void tick() {
-        for (Entity vehicle : model.entityRepository) {
+        for (Entity vehicle : model.repository) {
             if (vehicle.getClass() == acceptedCar) {
                 // Safe cast because T extends Car
                 T car = (T) vehicle;

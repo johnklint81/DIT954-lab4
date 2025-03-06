@@ -51,8 +51,8 @@ public class ControlPanelView extends JPanel {
         this.add(brakeButton, 3);
         this.add(turboOffButton, 4);
         this.add(lowerBedButton, 5);
-        this.add(addCarButton, 6);
-        this.add(removeCarButton);
+        this.add(addRandomCarButton, 6);
+        this.add(removeLastCarButton, 7);
         this.setPreferredSize(new Dimension((x), 200));
 
         this.setBackground(Color.CYAN);

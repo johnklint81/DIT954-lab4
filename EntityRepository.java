@@ -1,6 +1,8 @@
-public interface EntityRepository {
-    public void add(Entity entity);
-    public void remove(Entity entity);
-    public Entity pop();
-    public Entity[] list();
+import java.util.Iterator;
+import java.util.stream.Stream;
+
+public interface EntityRepository extends Iterable<Entity> {
+    void add(Entity entity);
+    void remove(Entity entity);
+    Entity pop();
 }
