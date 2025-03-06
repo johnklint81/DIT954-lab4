@@ -1,6 +1,7 @@
 package mvc;
 
-import entities.EntityFactory;
+import models.entities.EntityFactory;
+import mvc.interfaces.*;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package mvc;
+package mvc.interfaces;
 
-import entities.Entity;
+import models.Entity;
 
 public interface EntityRepository extends Iterable<Entity> {
     void add(Entity entity);

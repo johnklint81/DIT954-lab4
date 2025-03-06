@@ -1,6 +1,7 @@
 package mvc;
 
-import entities.MotorVehicle;
+import models.MotorVehicle;
+import mvc.views.CarView;
 
 import javax.swing.*;
 
@@ -23,20 +24,20 @@ public class CarController {
     }
 
     private void setUpListeners() {
-        view.controlPanel.startButton.addActionListener((e) -> model.setEngines(true));
-        view.controlPanel.stopButton.addActionListener((e) -> model.setEngines(false));
-        view.controlPanel.amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
-        view.controlPanel.gasButton.addActionListener((e) -> model.gas(amount));
-        view.controlPanel.brakeButton.addActionListener((e) -> model.brake(amount));
-        view.controlPanel.lowerBedButton.addActionListener(e -> model.lowerBeds(10));
-        view.controlPanel.liftBedButton.addActionListener(e -> model.raiseBeds(10));
-        view.controlPanel.turboOffButton.addActionListener(e -> model.setTurbos(false));
-        view.controlPanel.turboOnButton.addActionListener(e -> model.setTurbos(true));
-        view.controlPanel.addRandomCarButton.addActionListener(e -> {
+        view.getControlPanel().startButton.addActionListener((e) -> model.setEngines(true));
+        view.getControlPanel().stopButton.addActionListener((e) -> model.setEngines(false));
+        view.getControlPanel().amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
+        view.getControlPanel().gasButton.addActionListener((e) -> model.gas(amount));
+        view.getControlPanel().brakeButton.addActionListener((e) -> model.brake(amount));
+        view.getControlPanel().lowerBedButton.addActionListener(e -> model.lowerBeds(10));
+        view.getControlPanel().liftBedButton.addActionListener(e -> model.raiseBeds(10));
+        view.getControlPanel().turboOffButton.addActionListener(e -> model.setTurbos(false));
+        view.getControlPanel().turboOnButton.addActionListener(e -> model.setTurbos(true));
+        view.getControlPanel().addRandomCarButton.addActionListener(e -> {
             model.repository.add(model.factory.createRandomMotorVehicle(offset));
             offset += 100;
         });
-        view.controlPanel.removeLastCarButton.addActionListener(e -> {
+        view.getControlPanel().removeLastCarButton.addActionListener(e -> {
             model.repository.pop();
             offset -= 100;
         });
@@ -50,6 +51,6 @@ public class CarController {
 
     public void onTick() {
         model.tick();
-        view.drawPanel.repaint();
+        view.getDrawPanel().repaint();
     }
 }

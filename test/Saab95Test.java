@@ -1,4 +1,4 @@
-import entities.Saab95;
+import models.entities.Saab95;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

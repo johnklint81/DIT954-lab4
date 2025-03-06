@@ -1,4 +1,4 @@
-import entities.Scania;
+import models.entities.Scania;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

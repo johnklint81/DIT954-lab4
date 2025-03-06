@@ -1,5 +1,6 @@
-package entities;
+package models.entities;
 
+import models.Car;
 import mvc.ModelFacade;
 
 import java.awt.*;

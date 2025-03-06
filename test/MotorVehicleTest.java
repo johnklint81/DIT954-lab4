@@ -1,6 +1,5 @@
-import entities.MotorVehicle;
-import entities.Saab95;
-import entities.Volvo240;
+import models.MotorVehicle;
+import models.entities.Saab95;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

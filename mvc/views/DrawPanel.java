@@ -1,6 +1,11 @@
-package mvc;
+package mvc.views;
 
-import entities.*;
+import models.*;
+import models.entities.CarWorkshop;
+import models.entities.Saab95;
+import models.entities.Scania;
+import models.entities.Volvo240;
+import mvc.ModelFacade;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -47,7 +52,7 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Entity entity : model.repository) {
+        for (Entity entity : model.getRepository()) {
             g.drawImage(images.getOrDefault(entity.getClass(), images.get(Volvo240.class)), (int)entity.getPos().x(), (int)entity.getPos().y(), null); // see javadoc for more info on the parameters
         }
     }

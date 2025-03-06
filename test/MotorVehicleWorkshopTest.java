@@ -1,6 +1,6 @@
-import entities.Car;
-import entities.CarWorkshop;
-import entities.Volvo240;
+import models.Car;
+import models.entities.CarWorkshop;
+import models.entities.Volvo240;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

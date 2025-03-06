@@ -1,6 +1,7 @@
-package entities;
+package models;
 
 import mvc.*;
+import mvc.interfaces.EngineObserver;
 
 import java.awt.*;
 

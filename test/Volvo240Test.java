@@ -1,4 +1,4 @@
-import entities.Volvo240;
+import models.entities.Volvo240;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

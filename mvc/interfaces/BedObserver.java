@@ -1,4 +1,4 @@
-package mvc;
+package mvc.interfaces;
 
 public interface BedObserver {
     void raiseBed(double amount);

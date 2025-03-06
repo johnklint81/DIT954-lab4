@@ -1,4 +1,6 @@
-package mvc;
+package mvc.views;
+
+import mvc.ModelFacade;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,14 +23,14 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String frameName, ModelFacade model){
         this.model = model;
-//        this.controlPanel = new mvc.ControlPanelView(this, model);
-        this.x = ((int) model.worldSize.x());
-        this.y = ((int) model.worldSize.y());
+//        this.controlPanel = new mvc.views.ControlPanelView(this, model);
+        this.x = ((int) model.getWorldSize().x());
+        this.y = ((int) model.getWorldSize().y());
 
         drawPanel = new DrawPanel(model, x, y-240);
 
         this.setTitle(frameName);
-        this.setPreferredSize(new Dimension((int) model.worldSize.x(), (int) model.worldSize.y()));
+        this.setPreferredSize(new Dimension(x,y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
@@ -47,6 +49,13 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
+    public ControlPanelView getControlPanel() {
+        return controlPanel;
+    }
+
+    public DrawPanel getDrawPanel() {
+        return drawPanel;
     }
 }

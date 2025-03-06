@@ -1,7 +1,11 @@
-package entities;
+package models.entities;
 
 import java.awt.*;
+
+import models.Truck;
+import models.TruckBed;
 import mvc.*;
+import mvc.interfaces.BedObserver;
 
 public class Scania extends Truck implements BedObserver {
 

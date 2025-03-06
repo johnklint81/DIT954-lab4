@@ -1,7 +1,7 @@
-import entities.CarTransporter;
-import entities.MotorVehicle;
-import entities.Saab95;
-import entities.Volvo240;
+import models.entities.CarTransporter;
+import models.MotorVehicle;
+import models.entities.Saab95;
+import models.entities.Volvo240;
 import mvc.InMemoryEntityRepository;
 import mvc.ModelFacade;
 import mvc.Vec2;

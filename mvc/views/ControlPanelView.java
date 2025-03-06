@@ -1,4 +1,6 @@
-package mvc;
+package mvc.views;
+
+import mvc.ModelFacade;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,25 +10,25 @@ public class ControlPanelView extends JPanel {
     ModelFacade model;
     int x;
 
-    JPanel amountPanel = new JPanel();
-    JSpinner amountSpinner = new JSpinner();
-    JLabel amountLabel = new JLabel("Amount");
-    JButton addRandomCarButton = new JButton("Add random car");
-    JButton removeLastCarButton = new JButton("Remove car");
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Turbo on");
-    JButton turboOffButton = new JButton("Turbo off");
-    JButton liftBedButton = new JButton("Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Bed");
+    public JPanel amountPanel = new JPanel();
+    public JSpinner amountSpinner = new JSpinner();
+    public JLabel amountLabel = new JLabel("Amount");
+    public JButton addRandomCarButton = new JButton("Add random car");
+    public JButton removeLastCarButton = new JButton("Remove car");
+    public JButton gasButton = new JButton("Gas");
+    public JButton brakeButton = new JButton("Brake");
+    public JButton turboOnButton = new JButton("Turbo on");
+    public JButton turboOffButton = new JButton("Turbo off");
+    public JButton liftBedButton = new JButton("Lift Bed");
+    public JButton lowerBedButton = new JButton("Lower Bed");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    public JButton startButton = new JButton("Start all cars");
+    public JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
     public ControlPanelView(ModelFacade model){
         this.model = model;
-        this.x = ((int) model.worldSize.x());
+        this.x = ((int) model.getWorldSize().x());
         initComponents();
     }
 

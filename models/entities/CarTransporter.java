@@ -1,8 +1,13 @@
-package entities;
+package models.entities;
 
 import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+
+import models.Car;
+import models.MotorVehicle;
+import models.Ramp;
+import models.Truck;
 import mvc.*;
 
 public class CarTransporter extends Truck {

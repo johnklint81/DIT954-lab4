@@ -1,6 +1,6 @@
 package mvc;
 
-import entities.Entity;
+import models.Entity;
 
 public abstract class CollisionChecker {
 

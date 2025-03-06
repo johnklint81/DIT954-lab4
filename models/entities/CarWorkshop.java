@@ -1,5 +1,7 @@
-package entities;
+package models.entities;
 
+import models.Car;
+import models.Entity;
 import mvc.*;
 
 import java.util.*;
