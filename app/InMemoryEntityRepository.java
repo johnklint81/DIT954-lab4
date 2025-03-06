@@ -27,11 +27,14 @@ public class InMemoryEntityRepository implements EntityRepository {
     }
 
     @Override
-    public Entity pop() {
-        if (entities.isEmpty()) {
-            throw new IllegalStateException("entities.Entity repository is empty");
+    public <T extends Entity> Entity pop(Class<T> type) {
+
+        var entity = entities.reversed().stream().filter(c -> type.isAssignableFrom(c.getClass())).findFirst();
+        if (entity.isEmpty()) {
+            throw new IllegalArgumentException("Entity repository has no entities of type left");
         }
-        return entities.removeLast();
+        entities.remove(entity.get());
+        return entity.get();
     }
 
     @Override

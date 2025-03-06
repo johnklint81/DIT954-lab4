@@ -38,7 +38,7 @@ public class CarController {
             offset += 100;
         });
         view.getControlPanel().removeLastCarButton.addActionListener(e -> {
-            model.repository.pop();
+            model.repository.pop(MotorVehicle.class);
             offset -= 100;
         });
     }

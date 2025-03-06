@@ -4,5 +4,5 @@ import models.Entity;
 
 public interface EntityRepository extends Iterable<Entity> {
     void add(Entity entity);
-    Entity pop();
+    <T extends Entity> Entity pop(Class<T> type);
 }
