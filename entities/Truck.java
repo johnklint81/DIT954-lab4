@@ -1,3 +1,7 @@
+package entities;
+
+import mvc.ModelFacade;
+
 import java.awt.*;
 
 public abstract class Truck extends MotorVehicle {

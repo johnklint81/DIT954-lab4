@@ -1,5 +1,6 @@
-import java.util.Iterator;
-import java.util.stream.Stream;
+package mvc;
+
+import entities.Entity;
 
 public interface EntityRepository extends Iterable<Entity> {
     void add(Entity entity);

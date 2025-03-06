@@ -1,3 +1,5 @@
+package mvc;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +21,7 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String frameName, ModelFacade model){
         this.model = model;
-//        this.controlPanel = new ControlPanelView(this, model);
+//        this.controlPanel = new mvc.ControlPanelView(this, model);
         this.x = ((int) model.worldSize.x());
         this.y = ((int) model.worldSize.y());
 

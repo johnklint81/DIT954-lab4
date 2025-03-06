@@ -1,3 +1,7 @@
+package mvc;
+
+import entities.EntityFactory;
+
 import java.util.ArrayList;
 
 public class ModelFacade {
@@ -9,27 +13,35 @@ public class ModelFacade {
     EntityFactory factory;
     EntityRepository repository;
 
-    ModelFacade(EntityRepository repository, Vec2 worldSize) {
+    public ModelFacade(EntityRepository repository, Vec2 worldSize) {
         this.repository = repository;
         this.worldSize = worldSize;
         this.factory = new EntityFactory(this);
     }
 
-    Vec2 getWorldSize() {return worldSize;}
+    public EntityRepository getRepository() {
+        return repository;
+    }
 
-    void listenTick(TickObserver observer) {
+    public EntityFactory getFactory() {
+        return factory;
+    }
+
+    public Vec2 getWorldSize() {return worldSize;}
+
+    public void listenTick(TickObserver observer) {
         tickObservers.add(observer);
     }
 
-    void listenEngine(EngineObserver observer) {
+    public void listenEngine(EngineObserver observer) {
         engineObservers.add(observer);
     }
 
-    void listenTurbo(TurboObserver observer) {
+    public void listenTurbo(TurboObserver observer) {
         turboObservers.add(observer);
     }
 
-    void listenBed(BedObserver observer) {
+    public void listenBed(BedObserver observer) {
         bedObservers.add(observer);
     }
 

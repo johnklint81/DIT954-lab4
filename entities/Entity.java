@@ -1,3 +1,7 @@
+package entities;
+
+import mvc.*;
+
 public abstract class Entity implements TickObserver {
     private Vec2 pos, size;
     ModelFacade model;

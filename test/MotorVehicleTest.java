@@ -1,3 +1,9 @@
+import entities.MotorVehicle;
+import entities.Saab95;
+import entities.Volvo240;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.awt.*;
@@ -9,12 +15,11 @@ class MotorVehicleTest {
 
     @BeforeEach
     void before() {
-        saab = new Saab95(model);
+        saab = model.getFactory().createSaab();
     }
 
     @Test
     void move() {
-        MotorVehicle saab = new Saab95(model);
         double initialX = saab.getPos().x();
         double initialY = saab.getPos().y();
         saab.tick();
@@ -90,7 +95,7 @@ class MotorVehicleTest {
         // enginePower = 125, turbo = off,
         // speed is 125 * 0.01 * 1 = 1.25
         assertEquals(1.25, saab.speedFactor());
-        MotorVehicle volvo = new Volvo240(model);
+        MotorVehicle volvo = model.getFactory().createVolvo();
         // enginePower = 100, trimFactor = 1.25
         // speed is 100 * 0.01 * 1.25 = 1.25
         assertEquals(1.25, volvo.speedFactor());

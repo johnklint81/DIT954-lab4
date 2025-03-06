@@ -1,3 +1,7 @@
+package mvc;
+
+import entities.MotorVehicle;
+
 import javax.swing.*;
 
 /*
@@ -12,7 +16,7 @@ public class CarController {
     int amount = 0;
     int offset = 0;
 
-    CarController(ModelFacade model, CarView view) {
+    public CarController(ModelFacade model, CarView view) {
         this.model = model;
         this.view = view;
         setUpListeners();
@@ -38,7 +42,7 @@ public class CarController {
         });
     }
 
-    void addCar(MotorVehicle car) {
+    public void addCar(MotorVehicle car) {
         model.repository.add(car);
         car.setPos(new Vec2(0, offset));
         offset += 100;

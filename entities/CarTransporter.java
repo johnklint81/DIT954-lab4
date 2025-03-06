@@ -1,6 +1,9 @@
+package entities;
+
 import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import mvc.*;
 
 public class CarTransporter extends Truck {
   private static final double LOADING_DISTANCE = 1.0;
@@ -10,14 +13,14 @@ public class CarTransporter extends Truck {
   private final int maxCars;
 
   public CarTransporter(ModelFacade model, int maxCars) {
-    super(model, 2, 200, Color.BLUE, "CarTransporter");
+    super(model, 2, 200, Color.BLUE, "entities.CarTransporter");
     this.ramp = new Ramp();
     this.loadedCars = new ArrayDeque<>();
     this.maxCars = maxCars;
   }
 
   @Override
-  protected double speedFactor() {
+  public double speedFactor() {
     return getEnginePower() * 0.005;
   }
 
@@ -53,7 +56,7 @@ public class CarTransporter extends Truck {
       throw new IllegalStateException("Cannot load more entityRepository");
     }
     if (!isCloseEnough(car)) {
-      throw new IllegalStateException("Car is not close enough to the transporter");
+      throw new IllegalStateException("entities.Car is not close enough to the transporter");
     }
 
     loadedCars.push(car);

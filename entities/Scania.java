@@ -1,11 +1,14 @@
+package entities;
+
 import java.awt.*;
+import mvc.*;
 
 public class Scania extends Truck implements BedObserver {
 
   private final TruckBed truckBed;
 
   protected Scania(ModelFacade model)  {
-    super(model, 2, 100, Color.WHITE, "Scania");
+    super(model, 2, 100, Color.WHITE, "entities.Scania");
     truckBed = new TruckBed();
     model.listenBed(this);
   }
@@ -16,7 +19,7 @@ public class Scania extends Truck implements BedObserver {
   }
 
   @Override
-  protected double speedFactor() {
+  public double speedFactor() {
     return getEnginePower() * 0.01;
   }
 

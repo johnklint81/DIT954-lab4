@@ -1,7 +1,9 @@
+import entities.Saab95;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +13,7 @@ class Saab95Test {
 
     @BeforeEach
     void before() {
-        saab95 = new Saab95(model);
+        saab95 = model.getFactory().createSaab();
     }
 
     @Test
@@ -61,7 +63,7 @@ class Saab95Test {
     }
     @Test
     void getModelName() {
-        assertEquals("Saab95", saab95.getModelName());
+        assertEquals("entities.Saab95", saab95.getModelName());
     }
 
 }

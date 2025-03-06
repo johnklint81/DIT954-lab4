@@ -1,3 +1,10 @@
+import entities.CarTransporter;
+import entities.MotorVehicle;
+import entities.Saab95;
+import entities.Volvo240;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,8 +18,8 @@ public class MotorVehicleTransporterTest {
     @BeforeEach
     void setUp() {
         transporter = new CarTransporter(model, 4);
-        volvo = new Volvo240(model);
-        saab = new Saab95(model);
+        volvo = model.getFactory().createVolvo();
+        saab = model.getFactory().createSaab();
     }
 
     @Test
@@ -52,7 +59,7 @@ public class MotorVehicleTransporterTest {
         transporter.lowerRamp();
         // Load max number of entityRepository
         for (int i = 0; i < 4; i++) {
-            transporter.loadCar(new Volvo240(model));
+            transporter.loadCar(model.getFactory().createVolvo());
         }
         assertThrows(IllegalStateException.class, () -> transporter.loadCar(volvo));
     }

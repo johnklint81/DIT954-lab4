@@ -1,3 +1,7 @@
+package entities;
+
+import mvc.*;
+
 import java.awt.*;
 
 public abstract class MotorVehicle extends Entity implements EngineObserver {
@@ -103,7 +107,7 @@ public abstract class MotorVehicle extends Entity implements EngineObserver {
 
     // Protected because it is not meant to be changed directly by the user.
     // Abstract because it can change depending on model of car
-    protected abstract double speedFactor();
+    public abstract double speedFactor();
     // Protected because meant to be overridden and used by subclasses.
     // If they are protected we can still change them in our subclass while
     // preventing external access.

@@ -1,5 +1,7 @@
+package mvc;
+
 public record Vec2(double x, double y) {
-    static Vec2 ZERO = new Vec2(0, 0);
+    public static Vec2 ZERO = new Vec2(0, 0);
 
     public double distanceTo(Vec2 other) {
         return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));

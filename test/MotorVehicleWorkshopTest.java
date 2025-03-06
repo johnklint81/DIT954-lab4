@@ -1,3 +1,9 @@
+import entities.Car;
+import entities.CarWorkshop;
+import entities.Volvo240;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +23,7 @@ public class MotorVehicleWorkshopTest {
 
     @Test
     public void testSubmitCar() {
-        Volvo240 car = new Volvo240(model);
+        Volvo240 car = model.getFactory().createVolvo();
         workshop.submitCar(car);
         assertTrue(workshop.hasCar(car));
         workshop.retrieveCar(car);
@@ -31,20 +37,20 @@ public class MotorVehicleWorkshopTest {
     public void testWorkshopFullException() {
         assertThrows(IllegalStateException.class, () -> {
             for (int i = 0; i <= MAX_CARS; i++) {
-                workshop.submitCar(new Volvo240(model));
+                workshop.submitCar(model.getFactory().createVolvo());
             }
         });
     }
 
     @Test
     public void testPassengerCarWorkshop() {
-         volvoWorkshop.submitCar(new Volvo240(model));
-         // volvoWorkshop.submitCar(new Saab95());
+         volvoWorkshop.submitCar(model.getFactory().createVolvo());
+         // volvoWorkshop.submitCar(new entities.Saab95());
     }
 
     @Test
     public void testRetrieveNonSubmittedCarWorkshop() {
-        Volvo240 car = new Volvo240(model);
+        Volvo240 car = model.getFactory().createVolvo();
         assertThrows(IllegalArgumentException.class, () -> workshop.retrieveCar(car));
     }
 }

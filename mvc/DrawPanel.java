@@ -1,3 +1,7 @@
+package mvc;
+
+import entities.*;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -11,9 +15,7 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
     ModelFacade model;
-
     Map<Class<?>, BufferedImage> images = new HashMap<>();
 
     // Initializes the panel and reads the images

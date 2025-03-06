@@ -1,5 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import entities.MotorVehicle;
+import entities.Volvo240;
+import mvc.*;
+
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -17,14 +19,14 @@ public class Main {
         view = new CarView("CarSim", model);
         cc = new CarController(model, view);
 
-        var workshop = model.factory.createWorkshop(Volvo240.class, 3);
+        var workshop = model.getFactory().createWorkshop(Volvo240.class, 3);
         workshop.setPos(new Vec2(500, 50));
 
-        model.repository.add(workshop);
+        model.getRepository().add(workshop);
 
-        cc.addCar(model.factory.createVolvo());
-        cc.addCar(model.factory.createSaab());
-        cc.addCar(model.factory.createScania());
+        cc.addCar(model.getFactory().createVolvo());
+        cc.addCar(model.getFactory().createSaab());
+        cc.addCar(model.getFactory().createScania());
 
         var timer = new Timer(delay, (e) -> cc.onTick());
         timer.start();

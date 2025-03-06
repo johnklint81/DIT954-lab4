@@ -1,3 +1,7 @@
+import entities.Scania;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -9,7 +13,7 @@ public class ScaniaTest {
 
   @BeforeEach
   void setUp() {
-    scania = new Scania(model);
+    scania = model.getFactory().createScania();
   }
 
   @Test

@@ -1,11 +1,14 @@
+package entities;
+
 import java.awt.*;
+import mvc.*;
 
 public class Saab95 extends Car implements TurboObserver {
 
     private boolean turboOn;
 
     protected Saab95(ModelFacade model) {
-        super(model, 2, 125, Color.BLACK, "Saab95");
+        super(model, 2, 125, Color.BLACK, "entities.Saab95");
         turboOn = false;
         model.listenTurbo(this);
     }

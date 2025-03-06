@@ -1,3 +1,7 @@
+package entities;
+
+import mvc.*;
+
 import java.util.*;
 
 public class CarWorkshop<T extends Car> extends Entity {
@@ -36,9 +40,9 @@ public class CarWorkshop<T extends Car> extends Entity {
     }
 
     public void tick() {
-        for (Entity vehicle : model.repository) {
+        for (Entity vehicle : model.getRepository()) {
             if (vehicle.getClass() == acceptedCar) {
-                // Safe cast because T extends Car
+                // Safe cast because T extends entities.Car
                 T car = (T) vehicle;
                 if (CollisionChecker.collides(this, car)) {
                     car.setInWorkshop(true);

@@ -1,3 +1,7 @@
+package mvc;
+
+import entities.Entity;
+
 public abstract class CollisionChecker {
 
     public static boolean collides(Entity entity1, Entity entity2) {

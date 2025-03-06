@@ -1,7 +1,9 @@
+import entities.Volvo240;
+import mvc.InMemoryEntityRepository;
+import mvc.ModelFacade;
+import mvc.Vec2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +13,7 @@ class Volvo240Test {
 
     @BeforeEach
     void before() {
-        volvo240 = new Volvo240(model);
+        volvo240 = model.getFactory().createVolvo();
     }
 
     @Test
@@ -45,7 +47,7 @@ class Volvo240Test {
     }
     @Test
     void getModelName() {
-        assertEquals("Volvo240", volvo240.getModelName());
+        assertEquals("entities.Volvo240", volvo240.getModelName());
     }
 
 }

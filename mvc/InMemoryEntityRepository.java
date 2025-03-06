@@ -1,3 +1,6 @@
+package mvc;
+
+import entities.Entity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -7,17 +10,17 @@ public class InMemoryEntityRepository implements EntityRepository {
     ArrayList<Entity> entities = new ArrayList<>();
     int maxSize;
 
-    InMemoryEntityRepository(int maxSize) {
+    public InMemoryEntityRepository(int maxSize) {
         this.maxSize = maxSize;
     }
 
     @Override
     public void add(Entity entity) {
         if (entities.size() >= maxSize) {
-            throw new IllegalStateException("Entity repository is already full");
+            throw new IllegalStateException("entities.Entity repository is already full");
         }
         if (entities.contains(entity)) {
-            throw new IllegalArgumentException("Entity already in repository");
+            throw new IllegalArgumentException("entities.Entity already in repository");
         }
         entities.add(entity);
     }
@@ -25,7 +28,7 @@ public class InMemoryEntityRepository implements EntityRepository {
     @Override
     public Entity pop() {
         if (entities.isEmpty()) {
-            throw new IllegalStateException("Entity repository is empty");
+            throw new IllegalStateException("entities.Entity repository is empty");
         }
         return entities.removeLast();
     }
