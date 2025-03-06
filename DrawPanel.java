@@ -12,8 +12,6 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(500,50);
     ModelFacade model;
 
     Map<Class<?>, BufferedImage> images = new HashMap<>();
@@ -40,23 +38,15 @@ public class DrawPanel extends JPanel{
                 throw new RuntimeException(e);
             }
         });
-
-        try {
-            volvoWorkshopImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
 
-        for (Entity car : model.repository) {
-            g.drawImage(images.getOrDefault(car.getClass(), images.get(Volvo240.class)), (int)car.getPos().x(), (int)car.getPos().y(), null); // see javadoc for more info on the parameters
+        for (Entity entity : model.repository) {
+            g.drawImage(images.getOrDefault(entity.getClass(), images.get(Volvo240.class)), (int)entity.getPos().x(), (int)entity.getPos().y(), null); // see javadoc for more info on the parameters
         }
     }
 }

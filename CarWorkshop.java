@@ -5,7 +5,7 @@ public class CarWorkshop<T extends Car> extends Entity {
     private final int maxCars;
     private final Vec2 pos;
     public static final Vec2 SIZE = new Vec2(101, 96);
-    private Class <T> acceptedCar;
+    private final Class <T> acceptedCar;
 
     public CarWorkshop(Class <T> acceptedCar, ModelFacade model, int maxCars) {
         this(acceptedCar, model, maxCars, new Vec2(0, 0));

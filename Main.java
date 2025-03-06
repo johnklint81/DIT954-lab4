@@ -17,11 +17,14 @@ public class Main {
         view = new CarView("CarSim", model);
         cc = new CarController(model, view);
 
-        cc.model.repository.add(new CarWorkshop<>(Volvo240.class, model,3, new Vec2(500, 50)));
+        var workshop = model.factory.createWorkshop(Volvo240.class, 3);
+        workshop.setPos(new Vec2(500, 50));
 
-        cc.addCar(new Volvo240(model));
-        cc.addCar(new Saab95(model));
-        cc.addCar(new Scania(model));
+        model.repository.add(workshop);
+
+        cc.addCar(model.factory.createVolvo());
+        cc.addCar(model.factory.createSaab());
+        cc.addCar(model.factory.createScania());
 
         var timer = new Timer(delay, (e) -> cc.onTick());
         timer.start();
