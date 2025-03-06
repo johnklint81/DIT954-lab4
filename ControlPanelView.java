@@ -50,7 +50,7 @@ public class ControlPanelView extends JPanel {
         this.add(brakeButton, 3);
         this.add(turboOffButton, 4);
         this.add(lowerBedButton, 5);
-        this.setPreferredSize(new Dimension((x/2)+4, 200));
+        this.setPreferredSize(new Dimension((x), 200));
 
         this.setBackground(Color.CYAN);
 
