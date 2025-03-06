@@ -1,4 +1,4 @@
-package mvc.interfaces;
+package app.interfaces;
 
 import models.Entity;
 

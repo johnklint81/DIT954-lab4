@@ -2,16 +2,16 @@ package models.entities;
 
 import models.Car;
 import models.MotorVehicle;
-import mvc.ModelFacade;
+import app.ModelFacade;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EntityFactory {
-    private final mvc.ModelFacade model;
+    private final app.ModelFacade model;
     private final List<Class<? extends MotorVehicle>> vehicles = new ArrayList<>();
 
-    public EntityFactory(mvc.ModelFacade model) {
+    public EntityFactory(app.ModelFacade model) {
         vehicles.add(Volvo240.class);
         vehicles.add(Saab95.class);
         vehicles.add(Scania.class);

@@ -1,4 +1,4 @@
-package mvc.interfaces;
+package app.interfaces;
 
 public interface TurboObserver {
     void setTurbo(boolean newState);

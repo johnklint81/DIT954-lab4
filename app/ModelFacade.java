@@ -1,7 +1,7 @@
-package mvc;
+package app;
 
 import models.entities.EntityFactory;
-import mvc.interfaces.*;
+import app.interfaces.*;
 
 import java.util.ArrayList;
 

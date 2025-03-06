@@ -1,11 +1,11 @@
-package mvc.views;
+package app.views;
 
 import models.*;
 import models.entities.CarWorkshop;
 import models.entities.Saab95;
 import models.entities.Scania;
 import models.entities.Volvo240;
-import mvc.ModelFacade;
+import app.ModelFacade;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

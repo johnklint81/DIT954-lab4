@@ -4,8 +4,8 @@ import java.awt.*;
 
 import models.Truck;
 import models.TruckBed;
-import mvc.*;
-import mvc.interfaces.BedObserver;
+import app.*;
+import app.interfaces.BedObserver;
 
 public class Scania extends Truck implements BedObserver {
 

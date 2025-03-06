@@ -1,9 +1,9 @@
 import models.Car;
 import models.entities.CarWorkshop;
 import models.entities.Volvo240;
-import mvc.InMemoryEntityRepository;
-import mvc.ModelFacade;
-import mvc.Vec2;
+import app.InMemoryEntityRepository;
+import app.ModelFacade;
+import app.Vec2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

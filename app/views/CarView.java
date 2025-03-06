@@ -1,6 +1,6 @@
-package mvc.views;
+package app.views;
 
-import mvc.ModelFacade;
+import app.ModelFacade;
 
 import javax.swing.*;
 import java.awt.*;

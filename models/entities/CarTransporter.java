@@ -8,7 +8,7 @@ import models.Car;
 import models.MotorVehicle;
 import models.Ramp;
 import models.Truck;
-import mvc.*;
+import app.*;
 
 public class CarTransporter extends Truck {
   private static final double LOADING_DISTANCE = 1.0;

@@ -2,7 +2,7 @@ package models.entities;
 
 import models.Car;
 import models.Entity;
-import mvc.*;
+import app.*;
 
 import java.util.*;
 

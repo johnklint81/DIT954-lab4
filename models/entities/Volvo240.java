@@ -1,7 +1,7 @@
 package models.entities;
 
 import models.Car;
-import mvc.ModelFacade;
+import app.ModelFacade;
 
 import java.awt.*;
 

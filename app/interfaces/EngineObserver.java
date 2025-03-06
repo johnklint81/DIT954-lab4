@@ -1,4 +1,4 @@
-package mvc.interfaces;
+package app.interfaces;
 
 public interface EngineObserver {
     void setEngine(boolean newState);

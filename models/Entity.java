@@ -1,7 +1,7 @@
 package models;
 
-import mvc.*;
-import mvc.interfaces.TickObserver;
+import app.*;
+import app.interfaces.TickObserver;
 
 public abstract class Entity implements TickObserver {
     private Vec2 pos, size;

@@ -1,7 +1,7 @@
-package mvc;
+package app;
 
 import models.MotorVehicle;
-import mvc.views.CarView;
+import app.views.CarView;
 
 import javax.swing.*;
 

@@ -1,7 +1,7 @@
-package mvc;
+package app;
 
 import models.Entity;
-import mvc.interfaces.EntityRepository;
+import app.interfaces.EntityRepository;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

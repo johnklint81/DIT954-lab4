@@ -1,7 +1,7 @@
 import models.MotorVehicle;
 import models.entities.Volvo240;
-import mvc.*;
-import mvc.views.CarView;
+import app.*;
+import app.views.CarView;
 
 import java.util.ArrayList;
 import javax.swing.*;

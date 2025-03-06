@@ -3,8 +3,8 @@ package models.entities;
 import java.awt.*;
 
 import models.Car;
-import mvc.*;
-import mvc.interfaces.TurboObserver;
+import app.*;
+import app.interfaces.TurboObserver;
 
 public class Saab95 extends Car implements TurboObserver {
 

@@ -1,6 +1,6 @@
 package models;
 
-import mvc.ModelFacade;
+import app.ModelFacade;
 
 import java.awt.*;
 
