@@ -35,7 +35,7 @@ public class ControlPanelView extends JPanel {
     // Sets everything in place and fits everything
     private void initComponents() {
         SpinnerModel spinnerModel =
-                new SpinnerNumberModel(0, //initial value
+                new SpinnerNumberModel(100, //initial value
                         0, //min
                         100, //max
                         1);//step

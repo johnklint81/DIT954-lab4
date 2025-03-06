@@ -14,7 +14,7 @@ import javax.swing.*;
 public class CarController {
     ModelFacade model;
     CarView view;
-    int amount = 0;
+    double amount = 1;
     int offset = 0;
 
     public CarController(ModelFacade model, CarView view) {
@@ -26,7 +26,7 @@ public class CarController {
     private void setUpListeners() {
         view.getControlPanel().startButton.addActionListener((e) -> model.setEngines(true));
         view.getControlPanel().stopButton.addActionListener((e) -> model.setEngines(false));
-        view.getControlPanel().amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
+        view.getControlPanel().amountSpinner.addChangeListener((e) -> amount = ((double) ((JSpinner) e.getSource()).getValue()) / 100);
         view.getControlPanel().gasButton.addActionListener((e) -> model.gas(amount));
         view.getControlPanel().brakeButton.addActionListener((e) -> model.brake(amount));
         view.getControlPanel().lowerBedButton.addActionListener(e -> model.lowerBeds(10));
