@@ -3,19 +3,13 @@ import java.util.*;
 public class CarWorkshop<T extends Car> extends Entity {
     private final ArrayList<T> cars;
     private final int maxCars;
-    private final Vec2 pos;
     public static final Vec2 SIZE = new Vec2(101, 96);
     private final Class <T> acceptedCar;
 
     public CarWorkshop(Class <T> acceptedCar, ModelFacade model, int maxCars) {
-        this(acceptedCar, model, maxCars, new Vec2(0, 0));
-    }
-
-    public CarWorkshop(Class <T> acceptedCar, ModelFacade model, int maxCars, Vec2 pos) {
-        super(model, pos, SIZE);
+        super(model, Vec2.ZERO, SIZE);
         this.cars = new ArrayList<>();
         this.maxCars = maxCars;
-        this.pos = pos;
         this.acceptedCar = acceptedCar;
     }
 
@@ -29,7 +23,6 @@ public class CarWorkshop<T extends Car> extends Entity {
         }
 
         car.setInWorkshop(true);
-        car.setPos(pos);
         cars.add(car);
     }
 
@@ -49,7 +42,7 @@ public class CarWorkshop<T extends Car> extends Entity {
                 T car = (T) vehicle;
                 if (CollisionChecker.collides(this, car)) {
                     car.setInWorkshop(true);
-                    car.setPos(pos);
+                    car.setPos(getPos());
                 }
             }
         }
