@@ -11,8 +11,8 @@ public class MotorVehicleWorkshopTest {
 
     @BeforeEach
     public void setUp() {
-        workshop = new CarWorkshop<>(model, MAX_CARS);
-        volvoWorkshop = new CarWorkshop<>(model, MAX_CARS);
+        workshop = new CarWorkshop<>(Car.class, model, MAX_CARS);
+        volvoWorkshop = new CarWorkshop<>(Volvo240.class, model, MAX_CARS);
     }
 
     @Test

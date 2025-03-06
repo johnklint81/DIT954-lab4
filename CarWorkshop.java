@@ -5,16 +5,18 @@ public class CarWorkshop<T extends Car> extends Entity {
     private final int maxCars;
     private final Vec2 pos;
     public static final Vec2 SIZE = new Vec2(101, 96);
+    private Class <T> acceptedCar;
 
-    public CarWorkshop(ModelFacade model, int maxCars) {
-        this(model, maxCars, new Vec2(0, 0));
+    public CarWorkshop(Class <T> acceptedCar, ModelFacade model, int maxCars) {
+        this(acceptedCar, model, maxCars, new Vec2(0, 0));
     }
 
-    public CarWorkshop(ModelFacade model, int maxCars, Vec2 pos) {
+    public CarWorkshop(Class <T> acceptedCar, ModelFacade model, int maxCars, Vec2 pos) {
         super(model, pos, SIZE);
         this.cars = new ArrayList<>();
         this.maxCars = maxCars;
         this.pos = pos;
+        this.acceptedCar = acceptedCar;
     }
 
     public void submitCar(T car) {
@@ -42,7 +44,7 @@ public class CarWorkshop<T extends Car> extends Entity {
 
     public void tick() {
         for (Entity vehicle : model.entityRepository) {
-            if (vehicle instanceof Volvo240) {
+            if (vehicle.getClass() == acceptedCar) {
                 // Safe cast because T extends Car
                 T car = (T) vehicle;
                 if (CollisionChecker.collides(this, car)) {

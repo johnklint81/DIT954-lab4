@@ -16,7 +16,7 @@ public class CarController {
     CarController(ModelFacade model, CarView view) {
         this.model = model;
         this.view = view;
-        this.volvoWorkshop = new CarWorkshop<>(model,3, new Vec2(500, 50));
+        this.volvoWorkshop = new CarWorkshop<>(Volvo240.class, model,3, new Vec2(500, 50));
         setUpListeners();
     }
 
@@ -31,6 +31,8 @@ public class CarController {
         view.controlPanel.liftBedButton.addActionListener(e -> model.raiseBeds(10));
         view.controlPanel.turboOffButton.addActionListener(e -> model.setTurbos(false));
         view.controlPanel.turboOnButton.addActionListener(e -> model.setTurbos(true));
+        view.controlPanel.addRandomCarButton.addActionListener(e -> model.addRandomCar());
+        view.controlPanel.removeLastCarButton.addActionListener(e -> model.removeLastCar());
     }
 
     void addCar(MotorVehicle car) {

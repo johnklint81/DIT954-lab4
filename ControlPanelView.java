@@ -9,13 +9,14 @@ public class ControlPanelView extends JPanel {
     JPanel amountPanel = new JPanel();
     JSpinner amountSpinner = new JSpinner();
     JLabel amountLabel = new JLabel("Amount");
-
+    JButton addRandomCarButton = new JButton("Add random car");
+    JButton removeLastCarButton = new JButton("Remove car");
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton turboOnButton = new JButton("Turbo on");
+    JButton turboOffButton = new JButton("Turbo off");
+    JButton liftBedButton = new JButton("Lift Bed");
+    JButton lowerBedButton = new JButton("Lower Bed");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -50,6 +51,8 @@ public class ControlPanelView extends JPanel {
         this.add(brakeButton, 3);
         this.add(turboOffButton, 4);
         this.add(lowerBedButton, 5);
+        this.add(addCarButton, 6);
+        this.add(removeCarButton);
         this.setPreferredSize(new Dimension((x), 200));
 
         this.setBackground(Color.CYAN);

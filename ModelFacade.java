@@ -58,9 +58,10 @@ public class ModelFacade implements EntityRepository {
         turboObservers.forEach(e -> e.setTurbo(newState));
     }
 
-    public void add(Entity entity) {entityRepository.add(entity); }
 
-    public void remove(Entity entity) {entityRepository.remove(entity); }
+    public void addRandomCar() {entityRepository.add(new Volvo240(this)); }
+
+    public void removeLastCar(Entity entity) {entityRepository.pop(); }
 
     public Entity[] list() {
         int size = this.entityRepository.size();
