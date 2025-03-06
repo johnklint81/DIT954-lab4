@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class ControlPanelView extends JFrame {
+public class ControlPanelView extends JPanel {
     // The controller member
     ModelFacade model;
-    DrawPanel drawPanel;
-    CarView carView;
+//    DrawPanel drawPanel;
+//    CarView carView;
     JPanel controlPanel = new JPanel();
     //FIXME: remove unused
     int x, y;
@@ -26,9 +26,8 @@ public class ControlPanelView extends JFrame {
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public ControlPanelView(CarView carView, ModelFacade model){
+    public ControlPanelView(ModelFacade model){
         this.model = model;
-        this.carView = carView;
         this.x = ((int) model.worldSize.getX());
 //        this.y = ((int) model.worldSize.getY());
         initComponents();
@@ -47,7 +46,7 @@ public class ControlPanelView extends JFrame {
         amountPanel.add(amountLabel, BorderLayout.PAGE_START);
         amountPanel.add(amountSpinner, BorderLayout.PAGE_END);
 
-        carView.add(amountPanel);
+        this.add(amountPanel);
 
         controlPanel.setLayout(new GridLayout(2,4));
 
@@ -58,19 +57,19 @@ public class ControlPanelView extends JFrame {
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((x/2)+4, 200));
-        carView.add(controlPanel);
+        this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(x/5-15,200));
-        carView.add(startButton);
+        this.add(startButton);
 
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(x/5-15,200));
-        carView.add(stopButton);
+        this.add(stopButton);
     }
 }

@@ -17,23 +17,9 @@ public class CarView extends JFrame{
     // The controller member
     ModelFacade model;
     DrawPanel drawPanel;
-//    ControlPanelView controlPanel;
+    ControlPanelView controlPanel;
     int x, y;
 
-    public JPanel amountPanel;
-    public JSpinner amountSpinner;
-    public int amount;
-    public JLabel amountLabel;
-
-    public JButton gasButton;
-    public JButton brakeButton;
-    public JButton turboOnButton;
-    public JButton turboOffButton;
-    public JButton liftBedButton;
-    public JButton lowerBedButton;
-
-    public JButton startButton;
-    public JButton stopButton;
 
     // Constructor
     public CarView(String frameName, ModelFacade model){
@@ -49,22 +35,9 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-        ControlPanelView controlPanel = new ControlPanelView(this, this.model);
+        this.controlPanel = new ControlPanelView(this.model);
 
-        this.amountPanel = controlPanel.amountPanel;
-        this.amountSpinner = controlPanel.amountSpinner;
-        this.amount = controlPanel.amount;
-        this.amountLabel = controlPanel.amountLabel;
-
-        this.gasButton = controlPanel.gasButton;
-        this.brakeButton = controlPanel.brakeButton;
-        this.turboOnButton = controlPanel.turboOnButton;
-        this.turboOffButton = controlPanel.turboOffButton;
-        this.liftBedButton = controlPanel.liftBedButton;
-        this.lowerBedButton = controlPanel.lowerBedButton;
-
-        this.startButton = controlPanel.startButton;
-        this.stopButton = controlPanel.stopButton;
+        this.add(controlPanel);
 
 //        // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

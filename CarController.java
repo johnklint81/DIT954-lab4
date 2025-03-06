@@ -21,24 +21,15 @@ public class CarController {
 
     private void setUpListeners() {
         //FIXME: välj sätt att göra
-        view.startButton.addActionListener((e) -> model.setEngines(true));
-        view.stopButton.addActionListener((e) -> model.setEngines(false));
-        view.amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
-        view.gasButton.addActionListener((e) -> model.gas(amount));
-        view.brakeButton.addActionListener((e) -> model.brake(amount));
-        view.lowerBedButton.addActionListener(e -> model.lowerBeds(10));
-        view.liftBedButton.addActionListener(e -> model.raiseBeds(10));
-        view.turboOffButton.addActionListener(e -> model.setTurbos(false));
-        view.turboOnButton.addActionListener(e -> model.setTurbos(true));
-//        view.controlPanel.startButton.addActionListener((e) -> model.setEngines(true));
-//        view.controlPanel.stopButton.addActionListener((e) -> model.setEngines(false));
-//        view.controlPanel.amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
-//        view.controlPanel.gasButton.addActionListener((e) -> model.gas(amount));
-//        view.controlPanel.brakeButton.addActionListener((e) -> model.brake(amount));
-//        view.controlPanel.lowerBedButton.addActionListener(e -> model.lowerBeds(10));
-//        view.controlPanel.liftBedButton.addActionListener(e -> model.raiseBeds(10));
-//        view.controlPanel.turboOffButton.addActionListener(e -> model.setTurbos(false));
-//        view.controlPanel.turboOnButton.addActionListener(e -> model.setTurbos(true));
+        view.controlPanel.startButton.addActionListener((e) -> model.setEngines(true));
+        view.controlPanel.stopButton.addActionListener((e) -> model.setEngines(false));
+        view.controlPanel.amountSpinner.addChangeListener((e) -> amount = ((int) ((JSpinner) e.getSource()).getValue()) / 100);
+        view.controlPanel.gasButton.addActionListener((e) -> model.gas(amount));
+        view.controlPanel.brakeButton.addActionListener((e) -> model.brake(amount));
+        view.controlPanel.lowerBedButton.addActionListener(e -> model.lowerBeds(10));
+        view.controlPanel.liftBedButton.addActionListener(e -> model.raiseBeds(10));
+        view.controlPanel.turboOffButton.addActionListener(e -> model.setTurbos(false));
+        view.controlPanel.turboOnButton.addActionListener(e -> model.setTurbos(true));
     }
 
     void addCar(MotorVehicle car) {
