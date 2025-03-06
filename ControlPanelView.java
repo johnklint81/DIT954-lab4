@@ -4,15 +4,10 @@ import java.awt.*;
 public class ControlPanelView extends JPanel {
     // The controller member
     ModelFacade model;
-//    DrawPanel drawPanel;
-//    CarView carView;
-    JPanel controlPanel = new JPanel();
-    //FIXME: remove unused
-    int x, y;
+    int x;
 
     JPanel amountPanel = new JPanel();
     JSpinner amountSpinner = new JSpinner();
-    int amount = 0;
     JLabel amountLabel = new JLabel("Amount");
 
     JButton gasButton = new JButton("Gas");
@@ -29,7 +24,6 @@ public class ControlPanelView extends JPanel {
     public ControlPanelView(ModelFacade model){
         this.model = model;
         this.x = ((int) model.worldSize.getX());
-//        this.y = ((int) model.worldSize.getY());
         initComponents();
     }
 
@@ -48,17 +42,17 @@ public class ControlPanelView extends JPanel {
 
         this.add(amountPanel);
 
-        controlPanel.setLayout(new GridLayout(2,4));
+        this.setLayout(new GridLayout(2,4));
 
-        controlPanel.add(gasButton, 0);
-        controlPanel.add(turboOnButton, 1);
-        controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
-        controlPanel.setPreferredSize(new Dimension((x/2)+4, 200));
-        this.add(controlPanel);
-        controlPanel.setBackground(Color.CYAN);
+        this.add(gasButton, 0);
+        this.add(turboOnButton, 1);
+        this.add(liftBedButton, 2);
+        this.add(brakeButton, 3);
+        this.add(turboOffButton, 4);
+        this.add(lowerBedButton, 5);
+        this.setPreferredSize(new Dimension((x/2)+4, 200));
+
+        this.setBackground(Color.CYAN);
 
 
         startButton.setBackground(Color.blue);
